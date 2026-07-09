@@ -35,36 +35,42 @@ export default function HomePage() {
       title: "Fiber Cement Siding",
       body: "Durable fiber cement lap, panel, and board-and-batten systems built for Texas heat and hail — factory-certified install.",
       link: "/services/fiber-cement-siding",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faLayerGroup,
       title: "Vinyl Siding",
       body: "Insulated and standard vinyl with proper J-channel, starter strips, and color-matched trim for low-maintenance curb appeal.",
       link: "/services/vinyl-siding",
+      image: "/pages/home/services/service-2.jpg",
     },
     {
       icon: faWrench,
       title: "Siding Repair",
       body: "Storm damage, rot, and failed panels — honest repair-vs-replace advice and insurance documentation when you need it.",
       link: "/services/siding-repair",
+      image: "/pages/home/services/service-3.jpg",
     },
     {
       icon: faBorderAll,
       title: "Soffit & Fascia",
       body: "Ventilated soffit and aluminum-wrapped fascia that stop rot, wildlife entry, and attic moisture problems.",
       link: "/services/soffit-fascia",
+      image: "/pages/home/services/service-4.jpg",
     },
     {
       icon: faPaintRoller,
       title: "Exterior Trim",
       body: "PVC and painted trim for windows, corners, and architectural details that hold up in Central Texas humidity.",
       link: "/services/exterior-trim",
+      image: "/pages/home/services/service-1.jpg",
     },
     {
       icon: faHouseChimney,
       title: "Full-Home Reclad",
       body: "Tear-off, weather barrier, siding, soffit, fascia, and trim — managed as one coordinated project with one warranty path.",
       link: "/services/full-home-reclad",
+      image: "/pages/home/services/service-2.jpg",
     },
   ];
 
@@ -180,13 +186,10 @@ export default function HomePage() {
 
   return (
     <main className={styles.pageWrapper}>
-
       <WelcomePage />
-
       <TrustBar
         headline="Waco's trusted siding company — factory-certified, insured, and warrantied on every install"
       />
-
       <div className={styles.section}>
         <ServiceCardComponent
           heading="Siding & Exteriors Done Right"
@@ -194,52 +197,43 @@ export default function HomePage() {
           cards={services}
         />
       </div>
-
-      <div className={styles.section}>
-        <ImpactMetrics metrics={metrics} cityName="Waco" />
-      </div>
-
       <div className={styles.section}>
         <WhyChooseUs cityName="Waco" features={whyFeatures} />
       </div>
-
       <div className={styles.section}>
         <ProcessTimeline steps={processSteps} />
       </div>
-
       <div className={styles.section}>
-        <WhatToExpect expectations={expectations} />
+        <ImpactMetrics metrics={metrics} cityName="Waco" />
       </div>
-
       <div className={styles.section}>
         <Testimonials testimonials={reviews} />
       </div>
-
       <div className={styles.section}>
         <GuaranteeSection />
       </div>
-
+      <CTABanner
+        headline="Exteriors That Look New Again."
+        subline="Fiber cement, vinyl, and repair — weather-tight installs with trim details that photograph well."
+        primaryText="Call (254) 890-9090"
+        primaryLink="tel:+12548909090"
+        secondaryText="Exterior Consult"
+        secondaryLink="/contact"
+      
+        imageSrc="/pages/home/welcome/hero-main.jpg"
+       />
       <div className={styles.section}>
         <LocalServiceAreas cityName="Waco" areas={localAreas} />
       </div>
-
+      <div className={styles.section}>
+        <WhatToExpect expectations={expectations} />
+      </div>
       <div className={styles.section}>
         <FAQ cityName="Waco" faq={faq} />
       </div>
-
-      <CTABanner
-        headline="Ready for a Fresh Exterior That Lasts?"
-        subline="Free on-site estimate. Flat-rate quotes. Factory-certified installers. Lifetime Product Support + 10-Year Installation Warranty."
-        primaryText="Call (254) 890-9090"
-        primaryLink="tel:+12548909090"
-        secondaryText="Free Estimate"
-        secondaryLink="/contact"
-      />
-
       <div className={styles.section}>
         <BlogPreviewGrid />
       </div>
-
       <div className={styles.section}>
         <Variant4 title="Request Your Free Siding Estimate" cityName="Waco" slug="home" spot="home-page-form" formVariant={1} />
       </div>

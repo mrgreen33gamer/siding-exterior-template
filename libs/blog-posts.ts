@@ -19,7 +19,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Guides',
     date:     'July 3, 2026',
     readTime: 8,
-    imageSrc: '/pages/blogs/energy-savings.jpg',
+    imageSrc: '/pages/home/welcome/after.jpg',
     imageAlt: 'Fiber cement vs vinyl siding comparison for Texas homes',
     featured: true,
   },
@@ -30,7 +30,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Maintenance',
     date:     'June 24, 2026',
     readTime: 6,
-    imageSrc: '/pages/blogs/seer-rating.jpg',
+    imageSrc: '/pages/home/welcome/before.jpg',
     imageAlt: 'How long siding lasts in Central Texas climate',
   },
   {
@@ -40,7 +40,7 @@ const ALL_POSTS: BlogPost[] = [
     category: 'Insurance',
     date:     'June 15, 2026',
     readTime: 7,
-    imageSrc: '/pages/blogs/ac-replacement.jpg',
+    imageSrc: '/pages/home/welcome/hero-main.jpg',
     imageAlt: 'Storm damage siding claim tips for Waco TX homeowners',
   },
 ];
