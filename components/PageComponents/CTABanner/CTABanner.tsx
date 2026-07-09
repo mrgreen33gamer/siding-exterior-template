@@ -15,10 +15,10 @@ interface CTABannerProps {
 }
 
 export default function CTABanner({
-  headline      = "Ready to Stay Comfortable Year-Round?",
-  subline   = "Same-day appointments available. Flat-rate pricing — no hidden fees. Call now or grab a free estimate online.",
-  primaryText  = "Call (254) 900-1234",
-  primaryLink   = "tel:+12549001234",
+  headline      = "Ready for a Stronger Exterior That Lasts?",
+  subline   = "Free on-site estimates. Flat-rate quotes — no hidden fees. Call now or request your estimate online.",
+  primaryText  = "Call (254) 890-9090",
+  primaryLink   = "tel:+12548909090",
   secondaryText = "Free Estimate",
   secondaryLink  = "/contact",
   spot = "CTABanner",
@@ -30,7 +30,7 @@ export default function CTABanner({
       {/* Decorative grid lines */}
       <div className={styles.grid} aria-hidden="true" />
 
-      {/* Rotating snowflake bg */}
+      {/* Rotating exterior silhouette bg */}
       <motion.div
         className={styles.bgFlake}
         animate={{ rotate: 360 }}
@@ -38,12 +38,11 @@ export default function CTABanner({
         aria-hidden="true"
       >
         <svg width="520" height="520" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.8" strokeLinecap="round">
-          <line x1="12" y1="2" x2="12" y2="22"/>
-          <line x1="2" y1="12" x2="22" y2="12"/>
-          <polyline points="8 6 12 2 16 6"/>
-          <polyline points="8 18 12 22 16 18"/>
-          <polyline points="6 8 2 12 6 16"/>
-          <polyline points="18 8 22 12 18 16"/>
+          <path d="M4 20V8l4-4h8l4 4v12"/>
+          <path d="M4 12h16"/>
+          <path d="M8 12v8"/>
+          <path d="M12 12v8"/>
+          <path d="M16 12v8"/>
         </svg>
       </motion.div>
 
@@ -57,7 +56,7 @@ export default function CTABanner({
         >
           <span className={styles.eyebrow}>
             <span className={styles.eyebrowDot} />
-            Central Texas HVAC Experts Since 2010
+            Central Texas Siding Experts Since 2011
           </span>
           <h2 className={styles.heading}>{headline}</h2>
           <p className={styles.sub}>{subline}</p>

@@ -24,26 +24,25 @@ interface InsuredBadgeProps {
 const COVERAGES = [
   {
     icon: faShieldAlt,
-    title: 'Professional Liability',
-    detail: '$1,000,000 per claim / $2,000,000 aggregate',
+    title: 'General Liability',
+    detail: 'Fully insured crews on every jobsite',
   },
   {
     icon: faBuilding,
-    title: 'Technology Services',
-    detail: 'Web design, software, marketing & more',
+    title: 'Siding & Exterior Work',
+    detail: 'Residential, HOA, and commercial installs',
   },
   {
     icon: faBriefcase,
-    title: 'Cyber Insurance',
-    detail: '$100,000 coverage included',
+    title: '10-Year Install Warranty',
+    detail: 'Workmanship covered after install',
   },
   {
     icon: faFileContract,
-    title: 'Insurer',
-    detail: 'Next Insurance US Company — since 04/13/2026',
+    title: 'Licensed Contractor',
+    detail: 'Licensed & insured — documentation on request',
   },
 ];
-
 const InsuredBadge: React.FC<InsuredBadgeProps> = ({
   variant = 'section',
   ctaLink = '/contact',

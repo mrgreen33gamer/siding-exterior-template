@@ -1,35 +1,35 @@
 // src/app/contact/layout.tsx
 import type { Metadata } from 'next';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://hvac-pro-template.vercel.app';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.shieldlinesiding.com';
 const url = `${BASE_URL}/contact`;
 
 export const metadata: Metadata = {
-  title: 'Contact Arctic Air HVAC | Schedule Service in Waco & Central Texas',
+  title: 'Contact ShieldLine Siding | Free Estimates in Waco, TX',
   description:
-    'Contact Arctic Air HVAC to schedule AC repair, heating service, or a free estimate. Serving Waco, Hewitt, Killeen, Temple, and all of Central Texas. Call (254) 900-1234.',
+    'Request a free siding project estimate from ShieldLine Siding. Call (254) 890-9090 or fill out our online form — serving Waco and Central Texas.',
   keywords: [
-    'contact Arctic Air HVAC',
-    'HVAC service Waco TX',
-    'schedule AC repair Waco',
-    'HVAC estimate Central Texas',
-    'Arctic Air contact',
-    '254-900-1234',
+    'contact ShieldLine Siding',
+    'siding estimate Waco TX',
+    'siding contractor quote Waco',
+    'siding contractor Central Texas',
+    'ShieldLine Siding contact',
+    '254-753-6400',
   ],
   alternates: { canonical: url },
   openGraph: {
-    title: 'Contact Arctic Air HVAC | Schedule Service in Waco & Central Texas',
+    title: 'Contact ShieldLine Siding | Free Estimates in Waco, TX',
     description:
-      'Call, text, or submit a request. Same-day service available. Flat-rate pricing, 1-year warranty, NATE-certified techs.',
+      'Call, text, or submit a request. Flat-rate pricing, 10-Year Installation Warranty, licensed crews.',
     url,
-    siteName: 'Arctic Air HVAC',
+    siteName: 'ShieldLine Siding',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact Arctic Air HVAC | Waco & Central Texas',
-    description: 'Schedule HVAC service or get a free estimate. Call (254) 900-1234.',
+    title: 'Contact ShieldLine Siding | Waco & Central Texas',
+    description: 'Schedule a free siding project estimate. Call (254) 890-9090.',
   },
 };
 

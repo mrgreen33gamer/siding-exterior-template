@@ -27,7 +27,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCircleCheck, faExclamationTriangle, faArrowRight,
   faPhone, faStar, faShieldHalved, faClock, faTag,
-  faFan, faFire, faWrench, faFilter, faThermometerHalf, faWind, faBolt,
+  faHome, faLayerGroup, faWrench, faBorderAll, faPaintRoller, faHouseChimney,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getJourneyContext } from '&/useJourneyTracker';
@@ -38,21 +38,20 @@ interface Variant1Props {
 }
 
 const SERVICES = [
-  { icon: faFan,             label: 'AC Repair' },
-  { icon: faFire,            label: 'Heating / Furnace' },
-  { icon: faWrench,          label: 'New Installation' },
-  { icon: faFilter,          label: 'Duct Cleaning' },
-  { icon: faThermometerHalf, label: 'Maintenance' },
-  { icon: faWind,            label: 'Air Quality' },
-  { icon: faBolt,            label: 'Emergency' },
+  { icon: faHome,      label: 'Fiber Cement Siding' },
+  { icon: faLayerGroup, label: 'Vinyl Siding' },
+  { icon: faWrench,    label: 'Siding Repair' },
+  { icon: faBorderAll, label: 'Soffit & Fascia' },
+  { icon: faPaintRoller, label: 'Exterior Trim' },
+  { icon: faHouseChimney, label: 'Full-Home Reclad' },
 ];
 
 // Compact trust chips (replaces standalone .trustStrip block)
 const TRUST_CHIPS = [
-  { icon: faClock,        text: 'Same-day available' },
-  { icon: faTag,          text: 'Flat-rate pricing' },
-  { icon: faShieldHalved, text: 'NATE · TDLR' },
-  { icon: faStar,         text: '4.9★ · 300+ reviews' },
+  { icon: faClock,        text: 'On-time crews' },
+  { icon: faTag,          text: 'Flat-rate quotes' },
+  { icon: faShieldHalved, text: 'Licensed & insured' },
+  { icon: faStar,         text: '4.9★ · 720+ reviews' },
 ];
 
 export default function Variant1({ title, cityName, slug, spot, formVariant }: Variant1Props) {
@@ -133,7 +132,7 @@ export default function Variant1({ title, cityName, slug, spot, formVariant }: V
                 </div>
                 <h3 className={styles.successTitle}>Request Received!</h3>
                 <p className={styles.successText}>
-                  A licensed Arctic Air technician will reach out shortly. Keep an eye on your inbox and phone.
+                  A ShieldLine estimator will reach out shortly. Keep an eye on your inbox and phone.
                 </p>
                 <div className={styles.successBadges}>
                   <span>✓ Flat-rate quote</span>
@@ -206,9 +205,9 @@ export default function Variant1({ title, cityName, slug, spot, formVariant }: V
                     <div className={styles.altContact}>
                       <FontAwesomeIcon icon={faPhone} />
                       <span>Need help now?{' '}
-                        <a href="tel:+12549001234"
-                          onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Call (254) 900-1234', section: 'ContactForm-V1' })}>
-                          Call (254) 900-1234
+                        <a href="tel:+12548909090"
+                          onClick={() => trackEvent({ eventType: 'phone_click', elementLabel: 'Call (254) 890-9090', section: 'ContactForm-V1' })}>
+                          Call (254) 890-9090
                         </a>
                       </span>
                     </div>

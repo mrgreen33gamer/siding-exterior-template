@@ -37,9 +37,9 @@ const DEFAULT_GUARANTEES: Guarantee[] = [
   },
   {
     icon: faShieldHalved,
-    title: "1-Year Parts & Labor Warranty",
+    title: "10-Year Installation Warranty",
     description:
-      "Every repair we perform is covered for a full year — parts and labor. If it fails within 12 months, we fix it at no charge.",
+      "Every installation we perform is covered by Lifetime Product Support plus a 10-Year Installation Warranty. If our workmanship fails within 10 years, we make it right.",
   },
   {
     icon: faRotateLeft,
@@ -49,15 +49,15 @@ const DEFAULT_GUARANTEES: Guarantee[] = [
   },
   {
     icon: faCertificate,
-    title: "NATE-Certified Technicians",
+    title: "Factory-Certified Installers",
     description:
-      "Every tech who enters your home is NATE-certified and TDLR-licensed. No apprentices working alone — ever.",
+      "Every installer who enters your home is factory-certified. Bonded and insured on every job — documentation available on request.",
   },
   {
     icon: faCalendarCheck,
     title: "No Contracts. No Lock-In.",
     description:
-      "Our maintenance plans are month-to-month. We earn your business with every visit — not by holding you hostage with a contract.",
+      "We earn your business with every visit — not by holding you hostage with a multi-year service contract.",
   },
   {
     icon: faStar,
@@ -71,7 +71,7 @@ const GuaranteeSection: React.FC<GuaranteeSectionProps> = ({
   title      = "Our Promise to You",
   headline   = "We back every job\nwith real guarantees.",
   guarantees = DEFAULT_GUARANTEES,
-  ctaText    = "Schedule Service",
+  ctaText    = "Get a Free Estimate",
   ctaLink    = "/contact",
 }) => {
   const trackEvent = useTrackEvent();
@@ -92,7 +92,7 @@ const GuaranteeSection: React.FC<GuaranteeSectionProps> = ({
             ))}
           </h2>
           <p className={styles.body}>
-            Every HVAC company in Central Texas makes promises. We back ours in writing — with flat-rate pricing, certified technicians, and a 1-year warranty on every repair we touch.
+            Every siding company in Central Texas makes promises. We back ours in writing — with flat-rate pricing, factory-certified installers, and a 10-Year Installation Warranty on every install we touch.
           </p>
           <Link
             href={ctaLink}
@@ -117,7 +117,7 @@ const GuaranteeSection: React.FC<GuaranteeSectionProps> = ({
                 </svg>
               ))}
             </div>
-            <span className={styles.ratingText}>4.9 · 300+ verified Google reviews</span>
+            <span className={styles.ratingText}>4.9 · 720+ verified Google reviews</span>
           </div>
         </div>
 

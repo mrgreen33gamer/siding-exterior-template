@@ -1,18 +1,17 @@
 "use client";
 import Breadcrumb from "#/PageComponents/Breadcrumb/Breadcrumb";
-
 import styles from "./page.module.scss";
 
-import SectionIntro       from "#/PageComponents/SectionIntro/SectionIntro";
-import TrustBar           from "#/PageComponents/TrustBar/TrustBar";
+import SectionIntro from "#/PageComponents/SectionIntro/SectionIntro";
+import TrustBar from "#/PageComponents/TrustBar/TrustBar";
 import SectionIndustriesServed from "#/PageComponents/SectionIndustriesServed/SectionIndustriesServed";
-import WhyChooseUs        from "#/PageComponents/WhyChooseUs/WhyChooseUs";
-import ImpactMetrics      from "#/PageComponents/ImpactMetrics/ImpactMetrics";
-import LocalServiceAreas  from "#/PageComponents/LocalServiceAreas/LocalServiceAreas";
-import ValueComparison    from "#/PageComponents/ValueComparison/ValueComparison";
-import FAQ                from "#/PageComponents/FAQ/FAQ";
-import CTABanner          from "#/PageComponents/CTABanner/CTABanner";
-import Variant4           from "#/PageComponents/ContactForms/Variant4/Form";
+import WhyChooseUs from "#/PageComponents/WhyChooseUs/WhyChooseUs";
+import ImpactMetrics from "#/PageComponents/ImpactMetrics/ImpactMetrics";
+import LocalServiceAreas from "#/PageComponents/LocalServiceAreas/LocalServiceAreas";
+import ValueComparison from "#/PageComponents/ValueComparison/ValueComparison";
+import FAQ from "#/PageComponents/FAQ/FAQ";
+import CTABanner from "#/PageComponents/CTABanner/CTABanner";
+import Variant4 from "#/PageComponents/ContactForms/Variant4/Form";
 
 import {
   faTrophy, faChartLine, faClock,
@@ -24,144 +23,88 @@ export default function IndustriesPage() {
   const whyFeatures = [
     {
       icon: faHandshake,
-      title: "We Learn Your Industry Before We Build",
-      description: "Every industry has its own language, sales cycle, and customer expectations. Before we design or code anything, we audit how your industry converts online — and build to that standard.",
+      title: "We Learn Your Role Before We Bid",
+      description: "Builders, property managers, and historic-home owners each need different schedules, documentation, and material choices. We scope siding work to how your projects actually run.",
     },
     {
       icon: faShieldHalved,
-      title: "Locally Operated, Industry-Savvy",
-      description: "We're based in Waco, TX and have served businesses across automotive, HVAC, construction, finance, roofing, and more across Central Texas for 10+ years. Local knowledge + industry expertise.",
+      title: "Locally Operated, Spec-Savvy",
+      description: "Based in Waco since 2011, ShieldLine knows Central Texas weather, HOA guidelines, and builder punch-list expectations.",
     },
     {
       icon: faLightbulb,
-      title: "Websites, Software & Marketing — All Under One Roof",
-      description: "Whether your industry needs online booking, inventory tools, review management, or local ad campaigns — we handle all of it. No juggling three vendors for one goal.",
+      title: "Repair, Reclad & Document Under One Roof",
+      description: "Storm repairs, full reclads, and board-ready photo notes — without juggling multiple exterior vendors.",
     },
   ];
 
   const metrics = [
-    { icon: faTrophy,    value: 10,  label: "Industries actively served across Texas",        suffix: "+", duration: 2 },
-    { icon: faChartLine, value: 320, label: "Average lead increase across industry clients",   suffix: "%", duration: 3 },
-    { icon: faClock,     value: 13,  label: "Years serving Texas businesses",                  suffix: "+", duration: 2 },
+    { icon: faTrophy, value: 3, label: "Partner types actively served across Texas", suffix: "", duration: 2 },
+    { icon: faChartLine, value: 2800, label: "Homes reclad company-wide", suffix: "+", duration: 3 },
+    { icon: faClock, value: 15, label: "Years serving Texas properties", suffix: "+", duration: 2 },
   ];
 
   const localAreas = [
-    { town: "Waco",         benefit: "Our home base — serving all industries across McLennan County.",               highlight: "Headquarters" },
-    { town: "Hewitt",       benefit: "Family and trade businesses across Hewitt's growing community.",               highlight: "" },
-    { town: "Woodway",      benefit: "Professional-services and high-end client businesses.",                        highlight: "" },
-    { town: "Temple",       benefit: "A booming Bell County market with strong demand across industries.",           highlight: "" },
-    { town: "Killeen",      benefit: "Military-adjacent businesses and trades near Fort Cavazos.",                   highlight: "" },
-    { town: "China Spring", benefit: "Agricultural, rural, and contractor businesses in Bosque and McLennan County.", highlight: "" },
+    { town: "Waco", benefit: "HQ for builder, PM, and residential projects across McLennan County.", badge: "Headquarters" },
+    { town: "Temple", benefit: "Builder and portfolio coverage across Bell County.", badge: "" },
+    { town: "Killeen", benefit: "Multifamily and residential builder support.", badge: "" },
+    { town: "Hewitt", benefit: "Residential and property management portfolios.", badge: "" },
+    { town: "Woodway", benefit: "HOA-heavy neighborhoods and custom homes.", badge: "" },
+    { town: "Bellmead", benefit: "Managed properties and multi-unit exteriors.", badge: "" },
   ];
 
   const comparisonRows = [
-    { feature: "Industry-specific content & strategy",    us: "✅ Built per vertical",          others: "❌ Generic templates" },
-    { feature: "Local Central Texas market knowledge",    us: "✅ 10+ years in Waco",           others: "❌ Out-of-state agencies" },
-    { feature: "Web + software + marketing combined",     us: "✅ All services in-house",        others: "❌ Siloed vendors" },
-    { feature: "Transparent fixed pricing",               us: "✅ Quote before any work starts", others: "❌ Billable hours + surprises" },
-    { feature: "You own all deliverables",                us: "✅ Code, content, accounts",      others: "❌ Locked-in proprietary systems" },
+    { feature: "Role-specific project approach", us: "✅ Built per partner type", others: "❌ Generic residential only" },
+    { feature: "Local Central Texas knowledge", us: "✅ Serving Texas since 2011", others: "❌ Out-of-area crews" },
+    { feature: "Repair + reclad + documentation", us: "✅ All under one roof", others: "❌ Siloed vendors" },
+    { feature: "Transparent fixed pricing", us: "✅ Quote before work starts", others: "❌ Billable hours + surprises" },
+    { feature: "10-Year Installation Warranty", us: "✅ Every install", others: "❌ Limited" },
   ];
 
   const faq = [
     {
-      question: "What industries does Scott Applications work with?",
-      answer: "We currently have dedicated pages and proven experience for automotive, aviation, construction, electrical, finance, HVAC, manufacturing, oil & gas, plumbing, and roofing — plus general business services for professional services, retail, and nonprofits.",
+      question: "Who does ShieldLine partner with?",
+      answer: "Residential builders and general contractors, property management companies, and historic-home owners across Central Texas — plus homeowners on every service line.",
     },
     {
-      question: "Do you build industry-specific websites or use the same template for everyone?",
-      answer: "Every project is custom-built for the industry and the business. An HVAC company and a financial firm have completely different customer journeys, trust signals, and conversion paths — we build to those differences specifically.",
+      question: "Do you customize scope for each partner type?",
+      answer: "Yes. A builder lot schedule, a multifamily repair ticket list, and a historic trim package are scoped differently on purpose.",
     },
     {
-      question: "Do you serve industries outside of Central Texas?",
-      answer: "Yes — while we're based in Waco and primarily serve McLennan, Bell, Bosque, and Hill Counties, we've built industry-focused digital systems for Texas businesses from Dallas to Houston. Remote project management is standard for us.",
+      question: "Do you serve properties outside Waco?",
+      answer: "Yes — Temple, Killeen, Hewitt, Woodway, McGregor, China Spring, Bellmead, and most of Central Texas within our service radius.",
     },
     {
-      question: "Can you handle both the website and the marketing for my industry?",
-      answer: "Yes — we handle web design, custom software, graphic design, and digital marketing under one roof. This means your website, your SEO, and your ads all speak the same language and are optimized together, not in isolation.",
-    },
-    {
-      question: "How do I know which service is right for my industry?",
-      answer: "Start by clicking your industry below or contacting us directly. We'll do a free audit of your current digital presence, identify the biggest gaps, and recommend the services that will move the needle most — no pressure, no overselling.",
+      question: "Can you handle both repairs and full reclads?",
+      answer: "Yes — targeted repairs, partial elevations, and full-home reclads under one warranty-backed team.",
     },
   ];
 
   return (
     <main className={styles.pageWrapper}>
-
-      <Breadcrumb crumbs={[
-        { label: "Home", href: "/" },
-        { label: "Industries" },
-      ]} />
-
+      <Breadcrumb crumbs={[{ label: "Home", href: "/" }, { label: "Industries" }]} />
       <SectionIntro
-        title="Industries We Serve Across Texas"
-        subtitle="Specialized web design, software, and marketing solutions built for how your industry actually works — not a generic template with your logo swapped in."
+        title="Industries We Serve"
+        subtitle="Homebuilders, property management, and historic homes — factory-certified siding crews that show up with a plan."
       />
-
-      <TrustBar headline="Trusted by businesses across 10+ industries in Central Texas for 10+ years" />
-
-      {/* ── THE INDUSTRY GRID ── */}
-      <div className={styles.section}>
-        <SectionIndustriesServed
-          title="Browse by Industry"
-          subtitle="Click your industry to see exactly what we build for businesses like yours."
-        />
-      </div>
-
-      <div className={styles.section}>
-        <WhyChooseUs
-          cityName="Central Texas"
-          features={whyFeatures}
-          title="Why Industry-Specific Matters"
-        />
-      </div>
-
-      <div className={styles.section}>
-        <ImpactMetrics metrics={metrics} cityName="Central Texas" />
-      </div>
-
-      <div className={styles.section}>
-        <LocalServiceAreas
-          cityName="Waco"
-          areas={localAreas}
-          title="Industries Served Across Central Texas"
-        />
-      </div>
-
-      <div className={styles.section}>
-        <ValueComparison
-          title="Why Businesses Choose Scott Applications"
-          rows={comparisonRows}
-        />
-      </div>
-
-      <div className={styles.section}>
-        <FAQ
-          cityName="Waco"
-          faq={faq}
-          title="Industry Services — Frequently Asked Questions"
-        />
-      </div>
-
+      <TrustBar headline="2,800+ homes reclad · 4.9★ · bonded & insured" />
+      <div className={styles.section}><SectionIndustriesServed /></div>
+      <div className={styles.section}><WhyChooseUs cityName="Waco" features={whyFeatures} /></div>
+      <div className={styles.section}><ImpactMetrics metrics={metrics} cityName="Waco" /></div>
+      <div className={styles.section}><LocalServiceAreas cityName="Waco" areas={localAreas} /></div>
+      <div className={styles.section}><ValueComparison rows={comparisonRows} /></div>
+      <div className={styles.section}><FAQ cityName="Waco" faq={faq} title="Industry Partnership FAQs" /></div>
       <CTABanner
-        headline="Don't See Your Industry? Let's Talk."
-        subline="We work with businesses outside our listed verticals all the time. If you have a repeatable process, a local customer base, or a digital gap — we can build around it. Free consultation, no pressure."
-        primaryText="Tell Us About Your Business"
-        primaryLink="/contact"
-        secondaryText="Call Us Now"
-        secondaryLink="tel:+12549002520"
+        headline="Need a Reliable Siding Partner?"
+        subline="Flat-rate quotes. Factory-certified crews. Call (254) 890-9090."
+        primaryText="Call (254) 890-9090"
+        primaryLink="tel:+12548909090"
+        secondaryText="Request Estimate"
+        secondaryLink="/contact"
       />
-
       <div className={styles.section}>
-        <Variant4
-          title="Get a Free Industry-Specific Audit"
-          cityName="Waco"
-          slug="industries"
-          spot="industries-hub-page"
-          formVariant={4}
-        />
+        <Variant4 title="Industry Project Inquiry" cityName="Waco" slug="industries" spot="industries-index-form" formVariant={3} />
       </div>
-
     </main>
   );
 }

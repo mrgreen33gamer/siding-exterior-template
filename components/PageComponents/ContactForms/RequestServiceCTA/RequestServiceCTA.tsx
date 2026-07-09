@@ -5,8 +5,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faGlobe, faCodeBranch, faImagePortrait, faBullhorn,
-  faRobot, faCubesStacked, faArrowRight,
+  faHome, faLayerGroup, faWrench, faBorderAll,
+  faPaintRoller, faHouseChimney, faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { motion } from 'framer-motion';
 import styles from './styles.module.scss';
@@ -24,17 +24,17 @@ interface RequestServiceCTAProps {
 }
 
 const SERVICES: Service[] = [
-  { icon: faGlobe,         label: 'Web Design' },
-  { icon: faCodeBranch,    label: 'Custom Software' },
-  { icon: faImagePortrait, label: 'Graphic Design' },
-  { icon: faBullhorn,      label: 'Marketing / SEO' },
-  { icon: faRobot,         label: 'AI Automations' },
-  { icon: faCubesStacked,  label: '3D Modeling' },
+  { icon: faHome, label: 'Fiber Cement' },
+  { icon: faLayerGroup, label: 'Vinyl Siding' },
+  { icon: faWrench, label: 'Repair' },
+  { icon: faBorderAll, label: 'Soffit & Fascia' },
+  { icon: faPaintRoller, label: 'Trim' },
+  { icon: faHouseChimney, label: 'Full Reclad' },
 ];
 
 export default function RequestServiceCTA({
-  headline = "Let's Build Something That Actually Works.",
-  subline  = "Pick the services you're interested in — we'll put together a custom proposal tailored to your business.",
+  headline = "Ready for a Stronger Exterior?",
+  subline  = "Pick the services you're interested in — we'll put together a free estimate for your home.",
   ctaLabel = "Get My Free Quote",
 }: RequestServiceCTAProps) {
   const [selected, setSelected] = useState<string[]>([]);

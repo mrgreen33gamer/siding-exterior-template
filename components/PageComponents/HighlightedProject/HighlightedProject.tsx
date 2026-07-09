@@ -20,29 +20,27 @@ const HighlightedProject: React.FC<HighlightedProjectProps> = ({
   description,
   imageSrc,
   imageAlt,
-  projectLink = "https://scottapps.com/invoicing",
-  ctaLink = "/?pageSection=1",
+  projectLink = "/projects",
+  ctaLink = "/contact",
 }) => {
   return (
     <section className={styles.section} aria-label="Highlighted Project">
       <div className={styles.container}>
         <div className={styles.textSide}>
           <div className={styles.card}>
-            <span className={styles.tag}>Recent Project</span>
+            <span className={styles.tag}>Featured Project</span>
             <h2 className={styles.cardTitle}>{title}</h2>
             <p className={styles.cardDesc}>{description}</p>
             <div className={styles.ctaRow}>
               <Link
                 href={projectLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 className={styles.btnPrimary}
               >
-                Try Invoicing Software
+                View All Projects
                 <FontAwesomeIcon icon={faArrowRight} />
               </Link>
               <Link href={ctaLink} className={styles.btnGhost}>
-                Our Clients
+                Free Estimate
               </Link>
             </div>
           </div>

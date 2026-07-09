@@ -23,32 +23,32 @@ const AboutStory: React.FC<AboutStoryProps> = ({ cityName }) => {
         <div className={styles.storyBody}>
           <div className={styles.storyPull}>
             <p className={styles.pullQuote}>
-              "We started Arctic Air because we were tired of watching homeowners get ripped off by fly-by-night HVAC contractors."
+              "We started ShieldLine because we were tired of watching homeowners get stuck with failing siding and vague quotes from fly-by-night crews."
             </p>
             <div className={styles.pullAttrib}>
-              <span className={styles.pullName}>— Mike Hawkins</span>
-              <span className={styles.pullTitle}>Founder, Arctic Air HVAC</span>
+              <span className={styles.pullName}>— Gina Foster</span>
+              <span className={styles.pullTitle}>Founder, ShieldLine Siding</span>
             </div>
           </div>
 
           <div className={styles.storyText}>
             <p className={styles.storyParagraph}>
-              Founded in 2010 in Waco, TX, Arctic Air HVAC started with one truck and one principle:
-              give homeowners the straight story about their system, charge a fair price, and back the
-              work with a real warranty. No hourly billing surprises, no upsell pressure, no contracts.
+              Founded in 2011 in Waco, TX, ShieldLine Siding started with one crew and one principle:
+              estimate honestly, charge a fair flat rate, and back the work with a real installation warranty.
+              No hourly surprises, no upsell pressure, no disappearing after install day.
             </p>
             <p className={styles.storyParagraph}>
               Today we proudly serve <strong>{cityName}</strong> and every surrounding community —
-              from China Spring to Killeen — with a crew of NATE-certified, TDLR-licensed technicians
+              from China Spring to Killeen — with factory-certified, bonded and insured siding crews
               who live and work right here in Central Texas.
             </p>
 
             <div className={styles.milestones}>
               {[
-                { year: '2010', label: 'Founded in Waco' },
-                { year: '2014', label: 'Expanded to 5 techs' },
-                { year: '2018', label: '1,000 customers served' },
-                { year: '2024', label: '2,400+ systems serviced' },
+                { year: '2011', label: 'Founded in Waco' },
+                { year: '2016', label: 'Expanded crews' },
+                { year: '2020', label: '2,000+ homes reclad' },
+                { year: '2025', label: '2,800+ projects' },
               ].map((m, i) => (
                 <div key={i} className={styles.milestone}>
                   <span className={styles.milestoneYear}>{m.year}</span>

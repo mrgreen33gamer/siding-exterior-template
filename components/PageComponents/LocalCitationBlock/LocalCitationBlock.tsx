@@ -24,11 +24,11 @@ const DEFAULT_HOURS: HoursEntry[] = [
 ];
 
 const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
-  businessName  = 'Arctic Air HVAC',
-  address       = 'Waco, TX 76701',
-  phone         = '(254) 900-1234',
-  email         = 'service@arcticairhvac.com',
-  googleMapsUrl = 'https://maps.google.com/?q=Arctic+Air+HVAC+Waco+TX',
+  businessName  = 'ShieldLine Siding',
+  address       = '600 N Valley Mills Dr, Waco, TX 76710',
+  phone         = '(254) 890-9090',
+  email         = 'hello@shieldlinesiding.com',
+  googleMapsUrl = 'https://maps.google.com/?q=ShieldLine+Siding+Waco+TX',
   hours         = DEFAULT_HOURS,
   cityName      = 'Waco',
 }) => {
@@ -37,7 +37,7 @@ const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
       className={styles.section}
       aria-label="Business Contact Information"
       itemScope
-      itemType="https://schema.org/HVACBusiness"
+      itemType="https://schema.org/HomeAndConstructionBusiness"
     >
       <div className={styles.container}>
 
@@ -45,7 +45,7 @@ const LocalCitationBlock: React.FC<LocalCitationBlockProps> = ({
           <span className={styles.eyebrow}>Find Us</span>
           <h2 className={styles.title} itemProp="name">{businessName}</h2>
           <p className={styles.subtitle}>
-            Based in {cityName}, TX — serving all of Central Texas with licensed HVAC technicians.
+            Based in {cityName}, TX — serving all of Central Texas with licensed siding and exterior crews.
           </p>
         </div>
 

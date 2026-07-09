@@ -1,5 +1,5 @@
 // src/app/contact/page.tsx
-// Arctic Air HVAC — Contact Page (unique build, not just a form import)
+// ShieldLine Siding — Contact Page (unique build, not just a form import)
 // FIXED: Added useTrackEvent for:
 //   - phone_click  on the Phone & Text info card link
 //   - email_click  on the Email info card link
@@ -19,39 +19,38 @@ import CTABanner from '#/PageComponents/CTABanner/CTABanner';
 
 // ── Service options ────────────────────────────────────────────────────────────
 const SERVICES = [
-  'AC Repair', 'Heating / Furnace Repair', 'New System Installation',
-  'Seasonal Maintenance / Tune-Up', 'Duct Cleaning', 'Indoor Air Quality',
-  'Emergency Service', 'Other / Not Sure',
+  'Fiber Cement Siding', 'Vinyl Siding', 'Full-Home Reclad',
+  'Siding Repair', 'Exterior Trim', 'Soffit & Fascia',
+  'Other / Not Sure',
 ];
 
 // ── FAQ data ──────────────────────────────────────────────────────────────────
 const faq = [
   {
-    question: "What's the fastest way to reach you for an emergency?",
-    answer: "Call us directly at (254) 900-1234. We answer 7 days a week including evenings. For a genuine HVAC emergency in Central Texas heat or cold, call — don't wait on a form response.",
+    question: "What's the fastest way to reach you?",
+    answer: "Call us directly at (254) 890-9090. We answer during business hours and evenings when crews are in the field. For storm-damaged siding or active leaks, call — don't wait on a form response.",
   },
   {
-    question: 'How quickly can someone come out?',
-    answer: "Same-day service is available most days during business hours. Evening and weekend emergency calls are dispatched within 1–2 hours. We'll give you an honest ETA when you call — not a 4-hour window.",
+    question: 'How quickly can someone come out for an estimate?',
+    answer: "Most free on-site estimates are scheduled within a few business days. We'll give you an honest timeline when you call — not a vague window.",
   },
   {
-    question: 'Do you charge for the diagnostic visit?',
-    answer: 'We charge a standard diagnostic fee for non-emergency visits, which is waived when you proceed with the repair. Emergency dispatch calls have a separate fee. We\'ll confirm the amount when you schedule.',
+    question: 'Do you charge for the on-site estimate?',
+    answer: 'No — the initial inspection and written quote are free. You\'ll know the flat-rate price before any work begins.',
   },
   {
-    question: 'Do you work on commercial HVAC systems?',
-    answer: 'Yes — light commercial HVAC for restaurants, offices, retail spaces, and small warehouses is within our scope. Call to discuss your specific system and location.',
+    question: 'Do you work on commercial and multifamily properties?',
+    answer: 'Yes — homebuilders, property managers, and multifamily exteriors are core work for ShieldLine. Call to discuss your property and schedule.',
   },
   {
     question: 'What areas do you serve?',
-    answer: 'Waco, Hewitt, Woodway, Robinson, China Spring, Temple, Killeen, Hillsboro, Valley Mills, and most of Central Texas within about 60 miles of Waco. Call us — we probably cover your area.',
+    answer: 'Waco, Temple, Killeen, Hewitt, Woodway, McGregor, China Spring, Bellmead, and most of Central Texas within about 60 miles of Waco. Call us — we probably cover your area.',
   },
   {
-    question: 'How do I know if I need a repair or a full replacement?',
-    answer: "Our tech will tell you honestly after the diagnosis. If the repair cost exceeds 50% of a new system's cost and your unit is over 10 years old, we'll recommend replacement — but we'll always show you the numbers and let you decide.",
+    question: 'How do I know if I need a repair or a full reclad?',
+    answer: "We'll tell you honestly after the on-site look. If underlayment and framing are sound, sectional repair may be enough — if not, we'll show full reclad options with clear pricing.",
   },
 ];
-
 // ── Main component ────────────────────────────────────────────────────────────
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -108,13 +107,13 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}>
             <span className={styles.badgeDot} />
-            Available 7 Days — Evenings &amp; Emergencies Included
+            Available 7 Days — Evenings Included
           </motion.div>
           <motion.h1 className={styles.heroTitle}
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.55, delay: 0.08 }}>
             Let&apos;s Get Your<br />
-            <span className={styles.heroAccent}>HVAC Fixed</span>
+            <span className={styles.heroAccent}>Yard Looking Great</span>
           </motion.h1>
           <motion.p className={styles.heroSub}
             initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
@@ -141,8 +140,8 @@ export default function ContactPage() {
                     </svg>
                   ),
                   label:     'Phone & Text',
-                  value:     '(254) 900-1234',
-                  href:      'tel:+12549001234',
+                  value:     '(254) 890-9090',
+                  href:      'tel:+12548909090',
                   eventType: 'phone_click' as const,
                   eventLabel: 'Contact Page Phone',
                 },
@@ -154,8 +153,8 @@ export default function ContactPage() {
                     </svg>
                   ),
                   label:     'Email',
-                  value:     'contact@arcticairhvac.com',
-                  href:      'mailto:contact@arcticairhvac.com',
+                  value:     'hello@shieldlinesiding.com',
+                  href:      'mailto:hello@shieldlinesiding.com',
                   eventType: 'email_click' as const,
                   eventLabel: 'Contact Page Email',
                 },
@@ -167,8 +166,8 @@ export default function ContactPage() {
                     </svg>
                   ),
                   label:     'Address',
-                  value:     '4521 Bosque Blvd, Waco TX 76710',
-                  href:      'https://maps.google.com/?q=4521+Bosque+Blvd+Waco+TX+76710',
+                  value:     '600 N Valley Mills Dr, Waco TX 76710',
+                  href:      'https://maps.google.com/?q=3311+Franklin+Ave+Waco+TX+76710',
                   eventType: 'click' as const,
                   eventLabel: 'Contact Page Address',
                 },
@@ -216,12 +215,12 @@ export default function ContactPage() {
 
             {/* Trust callouts */}
             <div className={styles.trustBlock}>
-              <p className={styles.trustHeading}>Why homeowners choose Arctic Air</p>
+              <p className={styles.trustHeading}>Why property owners choose ShieldLine Siding</p>
               {[
                 'Flat-rate pricing — written quote before we start',
-                '1-year parts & labor warranty on every repair',
-                'NATE-certified, TDLR-licensed technicians only',
-                'Same-day service, 7 days a week',
+                '10-Year Installation Warranty on every job',
+                'licensed crews only',
+                'Same crew every visit, 7 days a week scheduling',
                 'No contracts, no lock-in — ever',
               ].map(t => (
                 <div key={t} className={styles.trustItem}>
@@ -248,8 +247,8 @@ export default function ContactPage() {
                   </div>
                   <h2 className={styles.successTitle}>Request Received!</h2>
                   <p className={styles.successText}>
-                    A licensed Arctic Air technician will reach out shortly — usually within one business day. For urgent needs, call us at{' '}
-                    <a href="tel:+12549001234">(254) 900-1234</a>.
+                    A ShieldLine Siding team member will reach out shortly — usually within one business day. For urgent needs, call us at{' '}
+                    <a href="tel:+12548909090">(254) 890-9090</a>.
                   </p>
                   <div className={styles.successMeta}>
                     <span>✓ Flat-rate quote</span>
@@ -338,7 +337,7 @@ export default function ContactPage() {
                       <label className={styles.label} htmlFor="c-message">Describe the Issue *</label>
                       <textarea id="c-message" className={`${styles.input} ${styles.textarea}`}
                         name="message" required rows={4}
-                        placeholder="What's happening? When did it start? Any error codes or noises?"
+                        placeholder="What do you need done? Any specific areas of the property or timing to know about?"
                         value={formData.message} onChange={handleChange} />
                     </div>
 
@@ -371,14 +370,14 @@ export default function ContactPage() {
                     <p className={styles.formNote}>
                       Or call/text us directly:{' '}
                       <a
-                        href="tel:+12549001234"
+                        href="tel:+12548909090"
                         onClick={() => trackEvent({
                           eventType:    'phone_click',
                           elementLabel: 'Contact Page Form Note Phone',
                           section:      'contact-page-form',
                         })}
                       >
-                        (254) 900-1234
+                        (254) 890-9090
                       </a>{' '}
                       — we answer 7 days a week.
                     </p>
@@ -398,12 +397,12 @@ export default function ContactPage() {
 
       {/* ── CTA Banner ───────────────────────────────────────────────────── */}
       <CTABanner
-        headline="Need Us Right Now?"
-        subline="Call (254) 900-1234 — we answer 7 days a week, evenings included. Emergency service available across Central Texas."
-        primaryText="Call (254) 900-1234"
-        primaryLink="tel:+12549001234"
+        headline="Ready to Get Started?"
+        subline="Call (254) 890-9090 — we answer 7 days a week, evenings included. Serving all of Central Texas."
+        primaryText="Call (254) 890-9090"
+        primaryLink="tel:+12548909090"
         secondaryText="Send a Text"
-        secondaryLink="sms:+12549001234"
+        secondaryLink="sms:+12548909090"
       />
 
     </main>

@@ -1,4 +1,4 @@
-// Arctic Air HVAC — About Page
+// ShieldLine Siding — About Page
 "use client";
 
 import styles from "./page.module.scss";
@@ -15,11 +15,8 @@ import ProcessTimeline from "#/PageComponents/ProcessTimeline/ProcessTimeline";
 
 import {
   faTrophy, faChartLine, faClock,
-  faHouseUser, faUsers, faLeaf,
-  faSearch,
-  faRocket,
-  faStar,
-  faTools,
+  faHouseUser, faUsers, faHammer,
+  faSearch, faRocket, faStar, faTools,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function AboutPage() {
@@ -27,50 +24,45 @@ export default function AboutPage() {
   const whyFeatures = [
     {
       icon: faHouseUser,
-      title: "Locally Owned Since 2010",
-      description: "Arctic Air was founded in Waco by Mike Hawkins, a Waco native and Master HVAC technician with 20+ years in the trade. We're not a franchise — every decision is made locally, every call is answered by someone who lives here.",
+      title: "Locally Owned Since 2011",
+      description: "ShieldLine Siding was founded in Waco by Gina Foster after years installing exteriors across Central Texas. We're not a franchise — every decision is made locally, every call is answered by someone who lives here.",
     },
     {
       icon: faUsers,
-      title: "A Crew You Can Trust in Your Home",
-      description: "Every technician on our team is background-checked, NATE-certified, and TDLR-licensed in Texas. We treat every home we enter with the same respect we'd want for our own families — shoe covers, clean workspace, no mess left behind.",
+      title: "Crews You Can Trust on Your Property",
+      description: "Factory-certified and insured crews who protect landscaping, haul debris daily, and leave the site clean without you having to ask.",
     },
     {
-      icon: faLeaf,
-      title: "Honest From the First Call",
-      description: "We won't upsell equipment you don't need. We won't recommend a replacement when a repair will do the job for years. Our reputation is built on straight talk — and 15 years of repeat customers prove it works.",
+      icon: faHammer,
+      title: "Honest From the First Estimate",
+      description: "We won't push fiber cement when vinyl is the better fit, or a full reclad when a sectional repair will do. Straight talk is how we earned 720+ reviews.",
     },
   ];
 
   const metrics = [
-    { icon: faTrophy,    value: 2400, label: "Homes and businesses we've served in Central Texas", suffix: "+", duration: 3 },
-    { icon: faChartLine, value: 98,   label: "Customer satisfaction rate",                         suffix: "%", duration: 2 },
-    { icon: faClock,     value: 15,   label: "Years serving Central Texas families",                suffix: "+", duration: 2 },
+    { icon: faTrophy,    value: 2800, label: "Homes reclad across Central Texas",                 suffix: "+", duration: 3 },
+    { icon: faChartLine, value: 98,   label: "Customer satisfaction rate",                        suffix: "%", duration: 2 },
+    { icon: faClock,     value: 15,   label: "Years serving Central Texas properties",            suffix: "+", duration: 2 },
   ];
 
   const processSteps = [
-    { number: 1, title: "Audit Your Automotive Digital Presence", description: "We review your GBP, website speed, inventory visibility, and local search rankings — identifying every search where a competitor is capturing your customer.", icon: faSearch },
-    { number: 2, title: "Build Inventory & Booking Systems",       description: "Vehicle listing pages, online booking, and a GBP optimized for your service menu — deployed as one cohesive digital presence.", icon: faRocket },
-    { number: 3, title: "Automate Review Collection",              description: "Post-service review requests that systematically build your Google reputation — turning every completed job into a public trust signal.", icon: faStar },
-    { number: 4, title: "Add Customer & Service Tools",            description: "Custom service history, CRM, and customer communication tools when you're ready to streamline your shop operations.", icon: faTools },
+    { number: 1, title: "Free On-Site Consultation", description: "We inspect elevations, discuss materials, and give you a written flat-rate quote before any work begins.", icon: faSearch },
+    { number: 2, title: "Clear Project Schedule", description: "Once you approve the quote, you get a realistic start window and daily communication while we're on site.", icon: faRocket },
+    { number: 3, title: "Quality Install, Every Time", description: "Weather barrier done right, panels fastened to spec, clean transitions — and a clean site when we leave.", icon: faStar },
+    { number: 4, title: "Warranty & Support", description: "Lifetime Product Support + 10-Year Installation Warranty and a local team that answers the phone after the project is done.", icon: faTools },
   ];
 
   return (
     <main className={styles.pageWrapper}>
-
       <SectionIntro
-        title="About Arctic Air HVAC"
-        subtitle="Waco-owned, Waco-operated, and Waco-proud since 2010. We do honest HVAC work at fair prices for the families and businesses we've called neighbors for 15 years."
+        title="About ShieldLine Siding"
+        subtitle="Waco-owned, Waco-operated, and Waco-proud since 2011. Durable exteriors for the families and businesses we call neighbors."
       />
 
-      <TrustBar headline="2,400+ Central Texas homes and businesses trust Arctic Air — and we've earned every one" />
+      <TrustBar headline="2,800+ homes reclad · 4.9★ from 720+ Central Texas reviews" />
 
       <div className={styles.section}>
-        <WhyChooseUs
-          cityName="Waco"
-          features={whyFeatures}
-          title="Who We Are"
-        />
+        <WhyChooseUs cityName="Waco" features={whyFeatures} title="Who We Are" />
       </div>
 
       <div className={styles.section}>
@@ -90,14 +82,13 @@ export default function AboutPage() {
       </div>
 
       <CTABanner
-        headline="Waco's HVAC Company — Ready When You Need Us"
-        subline="Same-day and emergency service. Flat-rate pricing. 1-year warranty. No contracts — ever."
+        headline="Waco's Siding Contractor — Ready When You Are"
+        subline="Flat-rate quotes. 10-Year Installation Warranty. Licensed & insured."
         primaryText="Call Us Now"
-        primaryLink="tel:+12549001234"
-        secondaryText="Request Service Online"
+        primaryLink="tel:+12548909090"
+        secondaryText="Request Estimate Online"
         secondaryLink="/contact"
       />
-
     </main>
   );
 }

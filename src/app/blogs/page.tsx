@@ -27,9 +27,9 @@ export default function BlogPage() {
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
           <span className={styles.eyebrow}>Insights &amp; Resources</span>
-          <h1 className={styles.pageTitle}>Arctic Air HVAC - Blog Center</h1>
+          <h1 className={styles.pageTitle}>ShieldLine Siding - Blog Center</h1>
           <p className={styles.pageSubtitle}>
-            Real talk and useful tips for Central Texas business owners — web design, software, marketing, and more.
+            Real talk and useful tips for Central Texas property owners — siding materials, storm repairs, and exterior-friendly builds.
           </p>
         </motion.div>
       </section>
@@ -86,10 +86,10 @@ export default function BlogPage() {
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
             <p className={styles.blogCTAHeading}>
-              Need reliable HVAC service in Central Texas?
+              Need reliable siding and exterior in Central Texas?
             </p>
             <p className={styles.blogCTABody}>
-              We've been keeping Waco-area homes and businesses comfortable with expert heating, cooling, and maintenance since 2015. Free estimate, no obligations.
+              We've been keeping Waco-area homes and businesses looking their best with expert siding and exterior, siding and exterior, and gate automation service since 2011. Free estimate, no obligations.
             </p>
             <Link href="/contact" className={styles.blogCTABtn}>
               Get Your Free Estimate Today

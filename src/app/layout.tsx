@@ -1,23 +1,5 @@
 // src/app/layout.tsx
-// Arctic Air HVAC — root layout
-//
-// MOBILE / SAFE-AREA FIX:
-//   Added a Next.js 14+ `viewport` export with:
-//     - viewportFit: 'cover'  → tells iOS to allow content (and bg color)
-//                                behind the notch + home indicator. Without
-//                                this, env(safe-area-inset-*) returns 0 and
-//                                the rest of the safe-area CSS in globals.css
-//                                does NOTHING — that's why you were seeing
-//                                white bars on top and bottom on iPhone.
-//     - themeColor: '#0d1b2a' → tints the iOS Safari URL bar / Android
-//                                status bar to match the brand obsidian dark.
-//                                Two values supplied so Safari can pick the
-//                                right one for light vs dark mode.
-//     - colorScheme: 'dark'   → tells the browser to render its own UI chrome
-//                                (form pickers, scrollbars, etc.) in dark mode.
-//
-//   The actual safe-area padding rules live in globals.css, applied to
-//   <header>, <footer>, and <body>. See that file for the full breakdown.
+// ShieldLine Siding — root layout
 import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, ABeeZee } from "next/font/google";
 import "./globals.css";
@@ -43,7 +25,6 @@ import reviews from "../../libs/local-db/reviews";
 
 config.autoAddCss = false;
 
-// ── FONTS ─────────────────────────────────────────────────────────────────────
 const barlowCondensed = Barlow_Condensed({
   weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
@@ -60,21 +41,13 @@ const aBeeZee = ABeeZee({
 
 const isProduction = process.env.NODE_ENV === "production";
 const BASE_URL = isProduction
-  ? "https://www.arcticairhvac.com"
+  ? "https://www.shieldlinesiding.com"
   : "http://localhost:3000";
 
-// ── VIEWPORT ──────────────────────────────────────────────────────────────────
-// Next.js 14+ moved viewport / themeColor / colorScheme out of `metadata` and
-// into a separate `viewport` export. The `viewportFit: 'cover'` is the single
-// most important line in this file for the notch / home-indicator fix.
 export const viewport: Viewport = {
   width:        "device-width",
   initialScale: 1,
   viewportFit:  "cover",
-  // Two themeColor entries so iOS Safari can pick the right one when the user
-  // toggles light/dark mode. Both are obsidian dark to match the brand bg
-  // applied to <body> in globals.css. Adjust if you want a lighter Safari
-  // chrome tint for light-mode users.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#0d1b2a" },
     { media: "(prefers-color-scheme: dark)",  color: "#0d1b2a" },
@@ -85,42 +58,42 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
-    template: "%s | Arctic Air HVAC",
+    default: "ShieldLine Siding | Fiber Cement, Vinyl & Exterior Remodels — Waco, TX",
+    template: "%s | ShieldLine Siding",
   },
   description:
-    "Arctic Air HVAC is a Waco, TX heating and cooling company offering AC repair, furnace service, new system installation, duct cleaning, and maintenance plans for Central Texas homes and businesses. Licensed, local, no contracts.",
+    "ShieldLine Siding is a Waco, TX siding contractor offering fiber cement siding, vinyl siding, siding repair, soffit & fascia, exterior trim, and full-home reclads across Central Texas. Factory-certified installers, bonded & insured, Lifetime Product Support + 10-Year Installation Warranty.",
   keywords: [
-    "Arctic Air HVAC",
-    "HVAC company Waco TX",
-    "AC repair Waco Texas",
-    "air conditioning installation Waco",
-    "furnace repair Central Texas",
-    "heating and cooling Waco TX",
-    "HVAC contractor Hewitt TX",
-    "duct cleaning Waco",
-    "emergency AC repair Waco",
+    "ShieldLine Siding",
+    "fiber cement siding Waco TX",
+    "vinyl siding Waco Texas",
+    "siding repair Central Texas",
+    "full home reclad Waco",
+    "soffit fascia Waco TX",
+    "exterior trim Hewitt TX",
+    "siding contractor Temple TX",
+    "James Hardie installers Killeen",
   ],
-  authors: [{ name: "Arctic Air HVAC", url: BASE_URL }],
-  creator: "Arctic Air HVAC",
-  publisher: "Arctic Air HVAC",
+  authors: [{ name: "ShieldLine Siding", url: BASE_URL }],
+  creator: "ShieldLine Siding",
+  publisher: "ShieldLine Siding",
   icons: {
     icon: [`${BASE_URL}/logos/favicon.ico?v=1`],
     apple: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
     shortcut: [`${BASE_URL}/logos/apple-touch-icon.png?v=1`],
   },
   openGraph: {
-    title: "Arctic Air HVAC | AC Repair, Heating & Installation — Waco, TX",
+    title: "ShieldLine Siding | Fiber Cement, Vinyl & Exterior Remodels — Waco, TX",
     description:
-      "Waco-based HVAC company for AC repair, furnace service, new installations, and maintenance plans across Central Texas. Licensed & insured. No contracts.",
+      "Waco-based siding company for fiber cement, vinyl, repairs, soffit & fascia, trim, and full-home reclads across Central Texas. Factory-certified & insured.",
     url: BASE_URL,
-    siteName: "Arctic Air HVAC",
+    siteName: "ShieldLine Siding",
     images: [
       {
-        url: `${BASE_URL}/logos/arctic-air-banner.png?v=1`,
+        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
         width: 1200,
         height: 630,
-        alt: "Arctic Air HVAC — Waco TX Air Conditioning & Heating",
+        alt: "ShieldLine Siding — Waco TX Fiber Cement & Vinyl Siding",
       },
     ],
     locale: "en_US",
@@ -128,10 +101,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arctic Air HVAC | Waco TX Heating & Cooling",
+    title: "ShieldLine Siding | Waco TX Fiber Cement & Vinyl",
     description:
-      "AC repair, heating service, new installations & maintenance plans for Central Texas. Licensed & insured — no contracts.",
-    images: [`${BASE_URL}/logos/arctic-air-banner.png?v=1`],
+      "Fiber cement, vinyl, siding repair & full-home reclads for Central Texas. Factory-certified installers — bonded & insured.",
+    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
   },
   robots: {
     index: true,
@@ -155,24 +128,24 @@ const ratingValue = "5.0";
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "HVACBusiness",
+  "@type": "HomeAndConstructionBusiness",
   "@id": `${BASE_URL}/#organization`,
-  name: "Arctic Air HVAC",
-  alternateName: "Arctic Air Heating & Cooling",
+  name: "ShieldLine Siding",
+  alternateName: "ShieldLine Siding Waco",
   description:
-    "Residential and commercial HVAC services in Waco and Central Texas — AC repair, heating, new installations, duct cleaning, and maintenance plans. Licensed, insured, no contracts.",
+    "Residential and commercial siding services in Waco and Central Texas — fiber cement siding, vinyl siding, siding repair, soffit & fascia, exterior trim, and full-home reclads. Factory-certified installers, bonded & insured, Lifetime Product Support + 10-Year Installation Warranty.",
   url: BASE_URL,
-  telephone: "+12549001234",
-  email: "contact@arcticairhvac.com",
-  foundingDate: "2010",
+  telephone: "+12548909090",
+  email: "hello@shieldlinesiding.com",
+  foundingDate: "2011",
   founder: {
     "@type": "Person",
-    name: "Mike Hawkins",
-    jobTitle: "Owner & Master HVAC Technician",
+    name: "Gina Foster",
+    jobTitle: "Owner & Lead Estimator",
   },
   address: {
     "@type": "PostalAddress",
-    streetAddress: "4521 Bosque Blvd",
+    streetAddress: "600 N Valley Mills Dr",
     addressLocality: "Waco",
     addressRegion: "TX",
     postalCode: "76710",
@@ -201,24 +174,22 @@ const localBusinessSchema = {
     { "@type": "City", name: "Waco",        containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Hewitt",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Woodway",      containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Robinson",     containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "Bellmead",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "China Spring", containedInPlace: { "@type": "State", name: "Texas" } },
-    { "@type": "City", name: "Hillsboro",    containedInPlace: { "@type": "State", name: "Texas" } },
+    { "@type": "City", name: "McGregor",     containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Temple",       containedInPlace: { "@type": "State", name: "Texas" } },
     { "@type": "City", name: "Killeen",      containedInPlace: { "@type": "State", name: "Texas" } },
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "HVAC Services",
+    name: "Siding & Exterior Services",
     itemListElement: [
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Heating Repair" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Furnace Installation" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Duct Cleaning" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "HVAC Maintenance Plans" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Indoor Air Quality" } },
-      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Smart Thermostat Installation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fiber Cement Siding" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Vinyl Siding" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Siding Repair" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Soffit & Fascia" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Exterior Trim" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Full-Home Reclad" } },
     ],
   },
   aggregateRating: {
@@ -232,7 +203,7 @@ const localBusinessSchema = {
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card, Check, Financing",
   sameAs: [
-    "https://www.facebook.com/arcticairhvac",
+    "https://www.facebook.com/shieldlinesiding",
     "https://www.google.com/maps/?cid=placeholder",
   ],
 };
@@ -254,12 +225,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* ConditionalShell shows Header/Footer only on non-admin pages */}
         <ConditionalShell>
           <Header />
         </ConditionalShell>
 
-        <NextTopLoader color="#f97316" showSpinner={false} />
+        <NextTopLoader color="#0ea5e9" showSpinner={false} />
 
         <Suspense fallback={null}>
           <Analytics />
@@ -275,10 +245,10 @@ export default function RootLayout({
                   alignItems: "center",
                   width: "100%",
                   height: "100vh",
-                  background: "#0a130a",
+                  background: "#0d1b2a",
                 }}
               >
-                <PulseLoader size={50} color="#f97316" />
+                <PulseLoader size={50} color="#0ea5e9" />
               </div>
             }
           >
@@ -294,7 +264,6 @@ export default function RootLayout({
           <CookieBanner />
         </Suspense>
 
-        {/* Footer only on non-admin pages */}
         <ConditionalShell>
           <Footer />
         </ConditionalShell>
