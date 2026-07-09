@@ -129,109 +129,157 @@
   min-height: 280px;
 }
 
-// ── Materials mosaic ───────────────────────────────────────────────────────
+// ── Siding board stack (horizontal plank profiles) ─────────────────────────
 
-.mosaic {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: minmax(96px, 1fr);
-  gap: 0.7rem;
+.boardStack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
   width: 100%;
-  max-width: 540px;
+  max-width: 520px;
   margin-left: auto;
+  padding: 0.85rem;
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba($white, 0.04) 0%, rgba($white, 0.015) 100%),
+    rgba(12, 16, 22, 0.85);
+  border: 1px solid rgba($white, 0.1);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
 
   @media (max-width: 960px) {
     margin: 0 auto;
-    max-width: 420px;
-    grid-auto-rows: minmax(84px, 1fr);
-  }
-
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.55rem;
+    max-width: 440px;
   }
 }
 
-.tile {
-  position: relative;
+.boardStackHeader {
   display: flex;
-  flex-direction: column;
-  border-radius: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0 0.2rem 0.55rem;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid rgba($white, 0.08);
+}
+
+.boardStackTitle {
+  font-family: $textFont;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba($orange, 0.9);
+}
+
+.boardStackMeta {
+  font-family: $textFont;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba($white, 0.4);
+}
+
+.boardFace {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: stretch;
+  min-height: 52px;
+  border-radius: 4px;
   overflow: hidden;
   border: 1px solid rgba($white, 0.1);
-  background: rgba($white, 0.03);
-  min-height: 96px;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  background: rgba($white, 0.02);
+  transition: border-color 0.2s, transform 0.18s, box-shadow 0.2s;
+
+  // Staggered “course” offsets like real siding
+  &:nth-child(odd) {
+    margin-left: 0;
+  }
+  &:nth-child(even) {
+    margin-left: 0.55rem;
+    margin-right: 0.35rem;
+  }
 
   &:hover {
-    border-color: rgba($orange, 0.35);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba($orange, 0.12);
+    border-color: rgba($orange, 0.4);
+    transform: translateX(3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   }
 }
 
-.tileWide {
-  grid-column: span 2;
-
-  @media (max-width: 480px) {
-    grid-column: span 1;
-  }
-}
-
-.tileTall {
-  grid-row: span 2;
-  min-height: 200px;
-
-  @media (max-width: 480px) {
-    grid-row: span 1;
-    min-height: 96px;
-  }
-}
-
-.tileFace {
+.boardProfile {
   position: relative;
-  flex: 1;
-  min-height: 64px;
+  min-height: 52px;
   overflow: hidden;
+  // Clapboard bevel edge
+  box-shadow:
+    inset 0 2px 0 rgba($white, 0.18),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.35);
 }
 
-.tileImage {
+.boardImage {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(0.95) contrast(1.05);
 }
 
-.tileOverlay {
+.profileLines {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 40%,
-    rgba($obsidian, 0.55) 100%
-  );
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   pointer-events: none;
+  padding: 4px 0;
+  z-index: 1;
+
+  span {
+    display: block;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.28) 12%,
+      rgba(0, 0, 0, 0.28) 88%,
+      transparent 100%
+    );
+  }
 }
 
-.tileName {
-  position: relative;
-  z-index: 1;
-  display: block;
-  padding: 0.45rem 0.65rem 0.55rem;
-  font-family: $textFont;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba($white, 0.85);
-  background: rgba($obsidian, 0.55);
-  border-top: 1px solid rgba($white, 0.06);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.boardLabel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.15rem;
+  min-width: 118px;
+  padding: 0.45rem 0.7rem;
+  background: rgba($obsidian, 0.82);
+  border-left: 1px solid rgba($white, 0.08);
 }
+
+.boardName {
+  font-family: $textFont;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba($white, 0.9);
+  white-space: nowrap;
+}
+
+.boardSku {
+  font-family: $textFont;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba($orange, 0.75);
+}
+
+// Legacy class stubs (unused)
+.mosaic, .tile, .tileWide, .tileTall, .tileFace, .tileImage, .tileOverlay, .tileName { display: none; }
 
 /* === UNIQUENESS IDENTITY LAYER — siding-exterior-template === */
 /* Auto-generated visual identity so shared archetypes diverge per brand. */
@@ -288,3 +336,27 @@
 }
 
 /* end identity layer */
+
+/* === HERO PATTERN UNIQUENESS — siding-exterior-template === */
+.hero {
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: linear-gradient(rgba($orange, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba($orange, 0.04) 1px, transparent 1px) !important;
+    background-size: 16px 16px !important;
+    opacity: 0.62 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  &::after {
+    content: '' !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background-image: radial-gradient(ellipse 50% 40% at 83% 32%, rgba($orange, 0.085), transparent 70%), radial-gradient(ellipse 40% 50% at 75% 51%, rgba($white, 0.03), transparent 65%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+}
+/* end hero pattern */

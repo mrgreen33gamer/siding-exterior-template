@@ -14,44 +14,46 @@ function MaterialsMosaic({
 }: {
   materials: Array<{ name: string; swatch: string; imageSrc?: string }>;
 }) {
-  // Mosaic span classes for visual interest (cycle pattern)
-  const spanClass = (i: number) => {
-    const mod = i % 6;
-    if (mod === 0) return styles.tileWide;
-    if (mod === 3) return styles.tileTall;
-    return '';
-  };
-
+  // Horizontal siding board stack — planks stacked like a wall profile
   return (
-    <div className={styles.mosaic} role="list" aria-label="Material samples">
+    <div className={styles.boardStack} role="list" aria-label="Siding profiles">
+      <div className={styles.boardStackHeader} aria-hidden="true">
+        <span className={styles.boardStackTitle}>Profile Wall</span>
+        <span className={styles.boardStackMeta}>{materials.length} profiles</span>
+      </div>
       {materials.map((m, i) => (
         <motion.div
           key={`${m.name}-${i}`}
-          className={`${styles.tile} ${spanClass(i)}`}
+          className={styles.boardFace}
           role="listitem"
-          initial={{ opacity: 0, y: 18, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, x: 28 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{
             duration: 0.45,
-            delay: 0.35 + i * 0.07,
+            delay: 0.3 + i * 0.08,
             ease: [0.22, 1, 0.36, 1],
           }}
+          style={{ ['--board-swatch' as string]: m.swatch }}
         >
-          <div
-            className={styles.tileFace}
-            style={{ backgroundColor: m.swatch }}
-          >
+          <div className={styles.boardProfile} style={{ backgroundColor: m.swatch }}>
             {m.imageSrc ? (
               <img
                 src={m.imageSrc}
                 alt=""
-                className={styles.tileImage}
+                className={styles.boardImage}
                 draggable={false}
               />
             ) : null}
-            <div className={styles.tileOverlay} aria-hidden="true" />
+            <div className={styles.profileLines} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </div>
           </div>
-          <span className={styles.tileName}>{m.name}</span>
+          <div className={styles.boardLabel}>
+            <span className={styles.boardName}>{m.name}</span>
+            <span className={styles.boardSku}>SL-{String(i + 1).padStart(2, '0')}</span>
+          </div>
         </motion.div>
       ))}
     </div>
