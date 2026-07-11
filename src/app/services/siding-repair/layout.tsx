@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "ShieldLine Siding",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${BASE_URL}/logos/scott-apps-banner.png`, alt: "Siding Repair in Waco, TX – ShieldLine Siding" }],
+    images: [{ url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`, alt: "Siding Repair in Waco, TX – ShieldLine Siding" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Siding Repair in Waco, TX | ShieldLine Siding",
     description: "Storm damage, rot, failed panels, and leak paths — honest repair-vs-replace guidance.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
 };
 

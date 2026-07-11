@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "ShieldLine Siding",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${BASE_URL}/logos/scott-apps-banner.png`, alt: "Fiber Cement Siding in Waco, TX – ShieldLine Siding" }],
+    images: [{ url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`, alt: "Fiber Cement Siding in Waco, TX – ShieldLine Siding" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Fiber Cement Siding in Waco, TX | ShieldLine Siding",
     description: "Durable fiber cement lap, panel, and board-and-batten systems built for Texas heat and hail.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
 };
 

@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "ShieldLine Siding",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${BASE_URL}/logos/scott-apps-banner.png`, alt: "Vinyl Siding in Waco, TX – ShieldLine Siding" }],
+    images: [{ url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`, alt: "Vinyl Siding in Waco, TX – ShieldLine Siding" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Vinyl Siding in Waco, TX | ShieldLine Siding",
     description: "Insulated and standard vinyl systems with proper J-channel, starter strips, and color-matched trim.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
 };
 

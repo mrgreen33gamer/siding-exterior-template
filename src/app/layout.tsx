@@ -97,7 +97,7 @@ export const metadata: Metadata = {
     siteName: "ShieldLine Siding",
     images: [
       {
-        url: `${BASE_URL}/logos/scott-apps-banner.png?v=1`,
+        url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`,
         width: 1200,
         height: 630,
         alt: "ShieldLine Siding — Waco TX Fiber Cement & Vinyl Siding",
@@ -111,7 +111,7 @@ export const metadata: Metadata = {
     title: "ShieldLine Siding | Waco TX Fiber Cement & Vinyl",
     description:
       "Fiber cement, vinyl, siding repair & full-home reclads for Central Texas. Factory-certified installers — bonded & insured.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png?v=1`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
   robots: {
     index: true,

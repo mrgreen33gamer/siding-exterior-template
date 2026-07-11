@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     siteName: "ShieldLine Siding",
     locale: "en_US",
     type: "website",
-    images: [{ url: `${BASE_URL}/logos/scott-apps-banner.png`, alt: "Soffit & Fascia in Waco, TX – ShieldLine Siding" }],
+    images: [{ url: `${BASE_URL}/pages/home/welcome/hero-main.jpg`, alt: "Soffit & Fascia in Waco, TX – ShieldLine Siding" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Soffit & Fascia in Waco, TX | ShieldLine Siding",
     description: "Ventilated soffit, aluminum-wrapped fascia, and eave repairs that stop rot and wildlife entry.",
-    images: [`${BASE_URL}/logos/scott-apps-banner.png`],
+    images: [`${BASE_URL}/pages/home/welcome/hero-main.jpg`],
   },
 };
 

@@ -63,14 +63,14 @@ export default function HomePage() {
       title: "Exterior Trim",
       body: "PVC and painted trim for windows, corners, and architectural details that hold up in Central Texas humidity.",
       link: "/services/exterior-trim",
-      image: "/pages/home/services/service-1.jpg",
+      image: "/pages/home/welcome/before.jpg",
     },
     {
       icon: faHouseChimney,
       title: "Full-Home Reclad",
       body: "Tear-off, weather barrier, siding, soffit, fascia, and trim — managed as one coordinated project with one warranty path.",
       link: "/services/full-home-reclad",
-      image: "/pages/home/services/service-2.jpg",
+      image: "/pages/home/welcome/after.jpg",
     },
   ];
 
