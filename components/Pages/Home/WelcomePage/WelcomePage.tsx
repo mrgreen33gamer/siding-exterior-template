@@ -1,213 +1,28 @@
-// ShieldLine Welcome — unique "Elevation Profile Board" (not materials photo mosaic).
-// CSS-built siding courses / profiles; zero stock-image tiles.
+// ShieldLine Hero — photographic parallax stage.
+// A real Central-Texas exterior at dusk drifts behind a sky-blue scrim; the right
+// column holds an authentic siding-install photo framed as a spec card. Replaces
+// the earlier CSS-only "Elevation Profile Board". Copy is unchanged.
+// Photos live in /public/pages/home/welcome.
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { PhoneIcon, ChevronIcon, CheckIcon } from './_shared/icons';
 import styles from './styles.module.scss';
 
-type ProfileKind =
-  | 'lap'
-  | 'board-batten'
-  | 'shake'
-  | 'vertical'
-  | 'soffit'
-  | 'trim';
-
-type Profile = {
-  name: string;
-  detail: string;
-  kind: ProfileKind;
-  tone: string;
-  shadow: string;
-  highlight: string;
-  sku: string;
-};
-
-const PROFILES: Profile[] = [
-  {
-    name: 'Fiber-Cement Lap',
-    detail: '6.25″ exposure · paint-grade',
-    kind: 'lap',
-    tone: '#8b9aab',
-    shadow: '#5c6b7a',
-    highlight: '#c5d0dc',
-    sku: 'SL-LP-01',
-  },
-  {
-    name: 'Board & Batten',
-    detail: '12″ board · 2.5″ batten',
-    kind: 'board-batten',
-    tone: '#6d7a6a',
-    shadow: '#3f4a3c',
-    highlight: '#9aab94',
-    sku: 'SL-BB-04',
-  },
-  {
-    name: 'Straight Shake',
-    detail: '7″ reveal · textured',
-    kind: 'shake',
-    tone: '#7a6a58',
-    shadow: '#4a3f34',
-    highlight: '#b09a82',
-    sku: 'SL-SK-07',
-  },
-  {
-    name: 'Vertical Panel',
-    detail: 'Ship-lap tongue & groove',
-    kind: 'vertical',
-    tone: '#5a6d7c',
-    shadow: '#33404a',
-    highlight: '#8aa0b2',
-    sku: 'SL-VP-02',
-  },
-  {
-    name: 'Vented Soffit',
-    detail: 'Hidden intake · continuous',
-    kind: 'soffit',
-    tone: '#b8c0c8',
-    shadow: '#7a848e',
-    highlight: '#e4e9ee',
-    sku: 'SL-SF-11',
-  },
-  {
-    name: 'Trim Package',
-    detail: 'Windows · corners · fascia',
-    kind: 'trim',
-    tone: '#e8ebe8',
-    shadow: '#a8b0a8',
-    highlight: '#ffffff',
-    sku: 'SL-TR-09',
-  },
-];
-
-function ProfileSwatch({ p }: { p: Profile }) {
-  return (
-    <div
-      className={styles.profileSwatch}
-      data-kind={p.kind}
-      style={
-        {
-          '--p-tone': p.tone,
-          '--p-shadow': p.shadow,
-          '--p-hi': p.highlight,
-        } as React.CSSProperties
-      }
-      aria-hidden="true"
-    >
-      {p.kind === 'lap' && (
-        <div className={styles.kindLap}>
-          <span /><span /><span /><span />
-        </div>
-      )}
-      {p.kind === 'board-batten' && (
-        <div className={styles.kindBB}>
-          <i /><i /><i />
-          <b /><b /><b />
-        </div>
-      )}
-      {p.kind === 'shake' && (
-        <div className={styles.kindShake}>
-          <span /><span /><span /><span /><span /><span />
-        </div>
-      )}
-      {p.kind === 'vertical' && (
-        <div className={styles.kindVert}>
-          <span /><span /><span /><span />
-        </div>
-      )}
-      {p.kind === 'soffit' && (
-        <div className={styles.kindSoffit}>
-          <span /><span /><span /><span /><span />
-        </div>
-      )}
-      {p.kind === 'trim' && (
-        <div className={styles.kindTrim}>
-          <span className={styles.trimFrame} />
-          <span className={styles.trimBar} />
-        </div>
-      )}
-    </div>
-  );
-}
-
-function ElevationProfileBoard() {
-  return (
-    <div className={styles.elevBoard} aria-label="ShieldLine siding profile board">
-      <div className={styles.elevCap} aria-hidden="true">
-        <span className={styles.elevBolt} />
-        <span className={styles.elevBrand}>SHIELDLINE · FIELD SAMPLES</span>
-        <span className={styles.elevBolt} />
-      </div>
-
-      <header className={styles.elevHead}>
-        <div>
-          <p className={styles.elevEyebrow}>Wall elevation kit</p>
-          <h2 className={styles.elevTitle}>Profile Board</h2>
-        </div>
-        <span className={styles.elevCount}>{PROFILES.length} courses</span>
-      </header>
-
-      {/* Mini façade mock — staggered courses */}
-      <div className={styles.facadePreview} aria-hidden="true">
-        <div className={styles.facadeGable} />
-        <div className={styles.facadeWall}>
-          {PROFILES.slice(0, 4).map((p, i) => (
-            <div
-              key={p.sku}
-              className={styles.facadeCourse}
-              style={{
-                background: `linear-gradient(180deg, ${p.highlight}, ${p.tone} 45%, ${p.shadow})`,
-                marginLeft: i % 2 === 0 ? 0 : 10,
-              }}
-            />
-          ))}
-          <div className={styles.facadeWindow} />
-        </div>
-      </div>
-
-      <ul className={styles.profileList} role="list">
-        {PROFILES.map((p, i) => (
-          <motion.li
-            key={p.sku}
-            className={styles.profileRow}
-            role="listitem"
-            initial={{ opacity: 0, x: 16 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              duration: 0.4,
-              delay: 0.3 + i * 0.055,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <ProfileSwatch p={p} />
-            <div className={styles.profileCopy}>
-              <div className={styles.profileNameRow}>
-                <span className={styles.profileName}>{p.name}</span>
-                <span className={styles.profileSku}>{p.sku}</span>
-              </div>
-              <span className={styles.profileDetail}>{p.detail}</span>
-            </div>
-            <span
-              className={styles.profileChip}
-              style={{ background: p.tone, borderColor: p.shadow }}
-              aria-hidden="true"
-            />
-          </motion.li>
-        ))}
-      </ul>
-
-      <footer className={styles.elevFoot} aria-hidden="true">
-        <span>Factory-certified crews</span>
-        <span className={styles.elevRule} />
-        <span>10-yr install warranty</span>
-      </footer>
-    </div>
-  );
-}
-
 export default function WelcomePage() {
+  const reduceMotion = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax on the background photo. Disabled under reduced-motion.
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', reduceMotion ? '0%' : '16%']);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, reduceMotion ? 1.08 : 1.16]);
+
   const badgeText = "Waco's Most Trusted Siding Company — Since 2011";
   const headlineLines = ['Stronger Walls.', 'Cleaner Lines.'];
   const headlineAccent = 'ShieldLine.';
@@ -224,8 +39,24 @@ export default function WelcomePage() {
   ];
 
   return (
-    <section className={styles.hero} aria-label="Hero">
-      <div className={styles.shard} aria-hidden="true" />
+    <section ref={heroRef} className={styles.hero} aria-label="Hero">
+      {/* Photographic parallax background — Central-Texas exterior at dusk */}
+      <motion.div
+        className={styles.bgLayer}
+        style={{ y: bgY, scale: bgScale }}
+        aria-hidden="true"
+      >
+        <Image
+          src="/pages/home/welcome/hero-main.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
+        />
+      </motion.div>
+      {/* Slate + sky-blue scrim keeps the headline legible and on-brand */}
+      <div className={styles.scrim} aria-hidden="true" />
 
       <div className={styles.layout}>
         <div className={styles.content}>
@@ -291,13 +122,38 @@ export default function WelcomePage() {
           </motion.div>
         </div>
 
+        {/* Authentic siding-install photo — the ownable image, framed as a spec card */}
         <motion.div
           className={styles.visual}
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.2, ease: 'easeOut' }}
         >
-          <ElevationProfileBoard />
+          <div className={styles.photoCard}>
+            <Image
+              src="/pages/home/welcome/siding-install-crew.jpg"
+              alt="Installers fitting new fiber-cement lap siding on a two-story home exterior"
+              fill
+              priority
+              sizes="(max-width: 960px) 88vw, 460px"
+              className={styles.photo}
+            />
+            <div className={styles.photoGlaze} aria-hidden="true" />
+
+            <div className={styles.photoBadge}>
+              <span className={styles.photoBadgeDot} />
+              Factory-Certified Crew · On-Site
+            </div>
+
+            <div className={styles.specCard}>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> Flat-rate pricing
+              </span>
+              <span className={styles.specRow}>
+                <CheckIcon size={10} /> 10-year install warranty
+              </span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

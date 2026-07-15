@@ -1,67 +1,113 @@
-// Hero D — Materials Grid mosaic
-// @use path assumes adaptation into components/Pages/Home/WelcomePage/
+// ShieldLine Hero — photographic parallax stage.
+// Slate obsidian ground, sky-blue detailing, Domine headline. Real dusk exterior
+// drifts behind a brand scrim; an authentic siding-install photo card sits right.
 @use '../../../../src/app/globalVariables.scss' as *;
 
 .hero {
   position: relative;
   min-height: 100svh;
+  height: auto;
   background: $obsidian;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
 
-  &::before {
+  // Fine grain so the dark reads as material, not flat. Above photo+scrim, below content.
+  &::after {
     content: '';
-    position: absolute; inset: 0;
-    background-image: repeating-linear-gradient(
-      -55deg, transparent, transparent 22px,
-      rgba($white, 0.012) 22px, rgba($white, 0.012) 23px
-    );
-    pointer-events: none; z-index: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.4;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   }
 }
 
-.shard {
-  position: absolute; top: 0; right: 0;
-  width: 48%; height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba($orange, 0.025) 40%, rgba($orange, 0.055) 100%);
-  clip-path: polygon(26% 0%, 100% 0%, 100% 100%, 0% 100%);
-  pointer-events: none; z-index: 1;
+// ── Photographic parallax background ──────────────────────────────────────────
+.bgLayer {
+  position: absolute;
+  top: -8%;
+  left: 0;
+  width: 100%;
+  height: 116%;
+  z-index: 0;
+  will-change: transform;
+}
+
+.bgImage {
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+// Slate + sky-blue scrim — keeps the dusk photo on-brand and the headline legible.
+// Darker on the left (text column), lighter on the right (photo card).
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 82% 16%, rgba(14, 165, 233, 0.20) 0%, rgba(14, 165, 233, 0) 55%),
+    radial-gradient(90% 80% at 10% 94%, rgba(3, 105, 161, 0.24) 0%, rgba(3, 105, 161, 0) 60%),
+    linear-gradient(100deg, rgba(15, 23, 42, 0.95) 0%, rgba(17, 26, 46, 0.82) 42%, rgba(20, 30, 52, 0.5) 74%, rgba(20, 30, 52, 0.36) 100%),
+    linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0) 32%, rgba(15, 23, 42, 0.55) 100%);
 }
 
 .layout {
-  position: relative; z-index: 2;
-  max-width: 1380px; margin: 0 auto;
-  padding: clamp(6rem, 11vh, 9rem) clamp(1.5rem, 5vw, 5rem) clamp(5rem, 9vh, 7rem);
+  position: relative;
+  z-index: 3;
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+  padding: clamp(6rem, 11vh, 9rem) clamp(1.5rem, 5vw, 5rem) clamp(4rem, 8vh, 6rem);
   display: grid;
-  grid-template-columns: minmax(0, 520px) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 460px);
   gap: clamp(2rem, 4vw, 4.5rem);
   align-items: center;
 
   @media (max-width: 960px) {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 2.75rem;
-    padding: clamp(5rem, 9vh, 7rem) 1.5rem clamp(4rem, 7vh, 6rem);
+    gap: 2.5rem;
   }
 }
 
 .content {
-  display: flex; flex-direction: column; gap: 1.5rem;
-  @media (max-width: 960px) { align-items: center; }
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  @media (max-width: 960px) {
+    align-items: center;
+  }
 }
 
 .badge {
-  display: inline-flex; align-items: center; gap: 0.55rem;
-  font-family: $textFont; font-size: 0.72rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba($orange, 0.9);
-  border: 1px solid rgba($orange, 0.28); background: rgba($orange, 0.07);
-  border-radius: 9999px; padding: 0.35rem 0.95rem; width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: $textFont;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $lightorange;
+  border: 1px solid rgba($orange, 0.42);
+  background: rgba($orange, 0.1);
+  border-radius: $radius-md;
+  padding: 0.4rem 0.95rem;
+  width: fit-content;
 }
 
 .badgeDot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: $orange; box-shadow: 0 0 8px rgba($orange, 0.8);
-  animation: pulse 2.4s ease-in-out infinite; flex-shrink: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: $orange;
+  box-shadow: 0 0 8px 1px rgba($orange, 0.75);
+  animation: pulse 2.4s ease-in-out infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
@@ -72,553 +118,248 @@
 .headline {
   font-family: $titleFont;
   font-size: clamp(2.6rem, 5.2vw, 5rem);
-  font-weight: 800; line-height: 0.95;
-  letter-spacing: -0.02em; color: $white; margin: 0;
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  color: $white;
+  margin: 0;
+  text-wrap: balance;
 }
 
-.accentLine { color: $orange; }
+.accentLine {
+  color: $lightorange;
+  background: linear-gradient(92deg, #7dd3fc 0%, #38bdf8 55%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .sub {
-  font-family: $textFont; font-size: clamp(1rem, 1.4vw, 1.15rem);
-  line-height: 1.55; color: rgba($white, 0.62); max-width: 34rem; margin: 0;
-  @media (max-width: 960px) { max-width: 28rem; }
+  font-family: $textFont;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.6;
+  color: rgba(240, 249, 255, 0.76);
+  max-width: 36rem;
+  margin: 0;
+  @media (max-width: 960px) {
+    max-width: 34ch;
+  }
 }
 
 .ctaRow {
-  display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
-  @media (max-width: 960px) { justify-content: center; }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 0.4rem;
+  @media (max-width: 960px) {
+    justify-content: center;
+  }
 }
 
 .ctaPrimary {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  font-family: $headerFont; font-size: 0.92rem; font-weight: 700;
-  color: $obsidian; background: $orange; text-decoration: none;
-  padding: 0.85rem 1.35rem; border-radius: 8px;
-  transition: background 0.18s, transform 0.16s;
-  &:hover { background: $lightorange; transform: translateY(-1px); }
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $headerFont;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: $white;
+  background: linear-gradient(180deg, #38bdf8 0%, #0ea5e9 100%);
+  text-decoration: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: $radius-md;
+  box-shadow: 0 1px 0 rgba(224, 242, 254, 0.4) inset, 0 12px 26px rgba(14, 165, 233, 0.3);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+  &:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+    box-shadow: 0 1px 0 rgba(224, 242, 254, 0.5) inset, 0 16px 34px rgba(14, 165, 233, 0.38);
+  }
 }
 
 .ctaSecondary {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  font-family: $headerFont; font-size: 0.92rem; font-weight: 700;
-  color: rgba($white, 0.85); text-decoration: none;
-  padding: 0.85rem 1.2rem; border-radius: 8px;
-  border: 1px solid rgba($white, 0.14);
-  transition: border-color 0.18s, background 0.18s;
-  &:hover { border-color: rgba($white, 0.28); background: rgba($white, 0.04); }
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: $headerFont;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgba(240, 249, 255, 0.9);
+  text-decoration: none;
+  padding: 0.9rem 1.3rem;
+  border-radius: $radius-md;
+  border: 1px solid rgba(240, 249, 255, 0.22);
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  &:hover {
+    border-color: rgba($orange, 0.6);
+    color: $offwhite;
+    background: rgba(240, 249, 255, 0.04);
+  }
 }
 
 .chips {
-  display: flex; flex-wrap: wrap; gap: 0.5rem;
-  @media (max-width: 960px) { justify-content: center; }
-}
-
-.chip {
-  display: inline-flex; align-items: center; gap: 0.35rem;
-  font-family: $textFont; font-size: 0.72rem; font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
-  color: rgba($white, 0.55);
-  padding: 0.35rem 0.7rem; border-radius: 999px;
-  border: 1px solid rgba($white, 0.08); background: rgba($white, 0.03);
-  svg { color: rgba($orange, 0.8); }
-}
-
-.visual {
-  position: relative;
-  width: 100%;
-  min-height: 280px;
-}
-
-// ── ShieldLine Elevation Profile Board (unique — no stock photos) ──────────
-
-.elevBoard {
-  width: 100%;
-  max-width: 420px;
-  margin-left: auto;
-  border-radius: 6px;
-  background:
-    linear-gradient(165deg, #1a2430 0%, #0c1218 55%, #0a0e12 100%);
-  border: 1px solid rgba($orange, 0.28);
-  box-shadow: 0 26px 56px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
   @media (max-width: 960px) {
-    margin: 0 auto;
-    max-width: 400px;
+    justify-content: center;
   }
 }
 
-.elevCap {
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: $textFont;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(240, 249, 255, 0.62);
+  padding: 0.35rem 0.7rem;
+  border-radius: $radius-sm;
+  border: 1px solid rgba(240, 249, 255, 0.1);
+  background: rgba(240, 249, 255, 0.03);
+  svg { color: $lightorange; }
+}
+
+// ── Authentic siding-install photo card (replaces the profile board) ──────────
+.visual {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.6rem;
-  padding: 0.5rem 0.85rem;
-  background: linear-gradient(180deg, #2a3848, #1a2430);
-  border-bottom: 1px solid rgba($orange, 0.2);
+  justify-content: center;
+  min-height: 340px;
 }
 
-.elevBolt {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #cbd5e1, #475569 70%);
-  flex-shrink: 0;
+.photoCard {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 5;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow:
+    0 1px 0 rgba(224, 242, 254, 0.14) inset,
+    0 30px 60px -20px rgba(0, 0, 0, 0.7),
+    0 0 0 6px rgba(14, 165, 233, 0.07);
 }
 
-.elevBrand {
+.photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+// Slate-to-shadow glaze so overlays stay readable and it reads as designed
+.photoGlaze {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 42, 0) 42%, rgba(15, 23, 42, 0.78) 100%),
+    linear-gradient(300deg, rgba(14, 165, 233, 0.16) 0%, rgba(14, 165, 233, 0) 46%);
+}
+
+.photoBadge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: $textFont;
-  font-size: 0.56rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba($orange, 0.88);
-}
-
-.elevHead {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.8rem 1rem 0.5rem;
-}
-
-.elevEyebrow {
-  margin: 0 0 0.15rem;
-  font-family: $textFont;
-  font-size: 0.56rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba($white, 0.4);
+  color: $offwhite;
+  background: rgba(15, 23, 42, 0.62);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(56, 189, 248, 0.32);
+  border-radius: $radius-pill;
+  padding: 0.4rem 0.85rem;
 }
 
-.elevTitle {
-  margin: 0;
-  font-family: $titleFont;
-  font-size: 1.12rem;
-  font-weight: 700;
-  color: $white;
-  line-height: 1;
-}
-
-.elevCount {
-  font-family: $textFont;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba($white, 0.38);
-}
-
-.facadePreview {
-  margin: 0 0.85rem 0.55rem;
-  padding: 0.65rem 0.75rem 0.55rem;
-  border-radius: 6px;
-  background: linear-gradient(180deg, #87a0b8 0%, #5a758c 100%);
-  border: 1px solid rgba($white, 0.12);
-  position: relative;
-  overflow: hidden;
-}
-
-.facadeGable {
-  height: 18px;
-  margin: 0 auto 0;
-  width: 72%;
-  background: linear-gradient(180deg, #3d4f5e, #2a3848);
-  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-}
-
-.facadeWall {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  padding: 4px 8px 10px;
-  background: #2a3848;
-}
-
-.facadeCourse {
-  height: 10px;
-  border-radius: 1px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.25);
-}
-
-.facadeWindow {
-  position: absolute;
-  right: 18%;
-  top: 28%;
-  width: 22px;
-  height: 26px;
-  background: linear-gradient(135deg, rgba(180, 220, 255, 0.55), rgba(60, 100, 140, 0.4));
-  border: 2px solid #1a2430;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15);
-}
-
-.profileList {
-  list-style: none;
-  margin: 0;
-  padding: 0.25rem 0.7rem 0.55rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-}
-
-.profileRow {
-  display: grid;
-  grid-template-columns: 56px 1fr 12px;
-  gap: 0.55rem;
-  align-items: center;
-  padding: 0.35rem 0.45rem;
-  border-radius: 5px;
-  background: rgba($white, 0.03);
-  border: 1px solid rgba($white, 0.07);
-  transition: border-color 0.18s, transform 0.18s;
-
-  &:hover {
-    border-color: rgba($orange, 0.35);
-    transform: translateX(3px);
-  }
-}
-
-.profileSwatch {
-  --p-tone: #8b9aab;
-  --p-shadow: #5c6b7a;
-  --p-hi: #c5d0dc;
-  width: 56px;
-  height: 44px;
-  border-radius: 3px;
-  background: var(--p-tone);
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  position: relative;
+.photoBadgeDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $lightorange;
+  box-shadow: 0 0 8px 1px rgba(56, 189, 248, 0.8);
   flex-shrink: 0;
 }
 
-.kindLap {
-  position: absolute; inset: 0; display: flex; flex-direction: column;
-  span {
-    flex: 1;
-    background: linear-gradient(180deg, var(--p-hi), var(--p-tone) 40%, var(--p-shadow));
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.25);
+.specCard {
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.85rem 1rem;
+  border-radius: $radius-md;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+}
+
+.specRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: $headerFont;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(240, 249, 255, 0.92);
+
+  svg {
+    color: $lightorange;
+    flex-shrink: 0;
   }
 }
 
-.kindBB {
-  position: absolute; inset: 0; display: flex; gap: 0;
-  i { flex: 1; background: linear-gradient(90deg, var(--p-shadow), var(--p-tone), var(--p-hi)); }
-  b {
-    width: 5px; flex-shrink: 0;
-    background: linear-gradient(90deg, var(--p-shadow), var(--p-hi));
-    box-shadow: 1px 0 0 rgba(0, 0, 0, 0.25);
+@media (max-width: 960px) {
+  .visual {
+    min-height: 0;
+    margin-top: 0.25rem;
+  }
+  .photoCard {
+    max-width: 360px;
+    aspect-ratio: 4 / 3;
   }
 }
 
-.kindShake {
-  position: absolute; inset: 2px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
-  span {
-    background: linear-gradient(180deg, var(--p-hi), var(--p-shadow));
-    border-radius: 0 0 3px 3px;
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
-  }
-}
-
-.kindVert {
-  position: absolute; inset: 0; display: flex; gap: 2px; padding: 2px;
-  span {
-    flex: 1;
-    background: linear-gradient(90deg, var(--p-shadow), var(--p-hi) 40%, var(--p-tone));
-  }
-}
-
-.kindSoffit {
-  position: absolute; inset: 0; display: flex; flex-direction: column; gap: 3px; padding: 4px;
-  span {
-    flex: 1;
-    background: repeating-linear-gradient(90deg, var(--p-tone) 0 4px, var(--p-shadow) 4px 5px);
-    border-radius: 1px;
-  }
-}
-
-.kindTrim {
-  position: absolute; inset: 4px;
-}
-.trimFrame {
-  position: absolute; inset: 0;
-  border: 4px solid var(--p-hi);
-  box-shadow: inset 0 0 0 1px var(--p-shadow);
-}
-.trimBar {
-  position: absolute; left: 20%; right: 20%; top: 50%; height: 4px;
-  margin-top: -2px; background: var(--p-shadow);
-}
-
-.profileCopy { min-width: 0; display: flex; flex-direction: column; gap: 0.1rem; }
-.profileNameRow { display: flex; justify-content: space-between; gap: 0.35rem; align-items: baseline; }
-.profileName {
-  font-family: $headerFont; font-size: 0.74rem; font-weight: 700;
-  color: $white; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.profileSku {
-  font-family: $textFont; font-size: 0.5rem; font-weight: 700;
-  letter-spacing: 0.08em; color: rgba($orange, 0.85); flex-shrink: 0;
-}
-.profileDetail {
-  font-family: $textFont; font-size: 0.6rem; color: rgba($white, 0.45);
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.profileChip {
-  width: 10px; height: 10px; border-radius: 2px; border: 1px solid; flex-shrink: 0;
-}
-
-.elevFoot {
-  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
-  padding: 0.5rem 0.85rem 0.65rem;
-  font-family: $textFont; font-size: 0.52rem; font-weight: 600;
-  letter-spacing: 0.08em; text-transform: uppercase; color: rgba($white, 0.32);
-  border-top: 1px solid rgba($white, 0.06);
-}
-.elevRule { width: 16px; height: 1px; background: rgba($orange, 0.35); }
-
-// Legacy stubs
-.boardStack, .boardFace, .boardProfile, .boardImage, .mosaic, .tile {
-  /* unused */
-}
-
-/* === UNIQUENESS IDENTITY LAYER — siding-exterior-template === */
-/* Auto-generated visual identity so shared archetypes diverge per brand. */
-
-.hero {
-  min-height: 100svh !important;
-  height: auto !important;
-}
-
-.layout {
-  grid-template-columns: minmax(0, 0.91fr) 1fr !important;
-  gap: clamp(4.41rem, 4vw, 5.91rem) !important;
-  padding-top: clamp(6.43rem, 11vh, 8.43rem) !important;
-}
-
-.shard {
-  clip-path: none !important;
-  opacity: 0.85 !important;
-}
-
-.headline {
-  letter-spacing: 0.1em !important;
-  text-transform: none !important;
-  font-weight: 800 !important;
-  transform: skewX(0.5deg);
-}
-
-.badge {
-  border-radius: 12px !important;
-}
-
-.chip {
-  border-radius: 8px !important;
-}
-
-.ctaPrimary,
-.ctaSecondary {
-  border-radius: 12px !important;
-}
-
-.visual {
-  transform: scale(1.055);
-}
-
-.statCard,
-.console,
-.dialCard,
-.baFrame,
-.tile,
-.jobCard,
-.stripCard,
-.metricBar {
-  box-shadow: 0 24px 60px rgba(0,0,0,0.4) !important;
-}
-
-/* end identity layer */
-
-/* === HERO PATTERN UNIQUENESS — siding-exterior-template === */
-.hero {
-  &::before {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: linear-gradient(rgba($orange, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba($orange, 0.04) 1px, transparent 1px) !important;
-    background-size: 16px 16px !important;
-    opacity: 0.62 !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
-  }
-
-  &::after {
-    content: '' !important;
-    position: absolute !important;
-    inset: 0 !important;
-    background-image: radial-gradient(ellipse 50% 40% at 83% 32%, rgba($orange, 0.085), transparent 70%), radial-gradient(ellipse 40% 50% at 75% 51%, rgba($white, 0.03), transparent 65%) !important;
-    pointer-events: none !important;
-    z-index: 0 !important;
-  }
-}
-/* end hero pattern */
-
-/* === MOBILE HERO FOLD SAFETY (fleet QA) === */
 @media (max-width: 640px) {
-  .hero,
-  .section,
-  .welcome {
+  .hero {
     min-height: 100svh;
-    height: auto !important;
-  }
-  .headline,
-  .title,
-  .heroTitle {
-    font-size: clamp(2.05rem, 9vw, 2.85rem) !important;
-    line-height: 1.05 !important;
-  }
-  .layout,
-  .heroInner,
-  .contentWrap {
-    gap: 1.25rem !important;
-    padding-bottom: 2rem !important;
-  }
-  .ctaRow,
-  .actions,
-  .heroCtas {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .visual,
-  .heroVisual,
-  .meter,
-  .statGrid {
-    min-height: 0 !important;
-  }
-}
-
-/* === TABLET + MOBILE HERO VISUAL DEFER (fleet QA) === */
-/* Hide side dials/meters on tablet & phone so the hero fold stays clean */
-@media (max-width: 960px) {
-  .visual,
-  .heroVisual,
-  .meterWrap,
-  .rightCol,
-  .heroArt {
-    display: none !important;
-  }
-}
-
-/* === MOBILE HERO COPY TIGHTEN (fleet QA) === */
-@media (max-width: 640px) {
-  .sub,
-  .heroSub,
-  .description {
-    font-size: 0.9rem !important;
-    line-height: 1.45 !important;
-    max-width: 34ch !important;
-  }
-  .chips {
-    display: none !important; /* trust chips below fold on phone — CTAs first */
-  }
-}
-
-/* === MOBILE SINGLE COLUMN FORCE (fleet QA) === */
-@media (max-width: 960px) {
-  .layout,
-  .heroLayout,
-  .grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 640px) {
-  .hero,
-  .section {
-    height: auto !important;
-    min-height: 100svh !important;
-    overflow: visible !important;
+    height: auto;
   }
   .layout {
-    padding-top: 5rem !important;
-    padding-bottom: 2rem !important;
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+    gap: 1.5rem;
   }
-}
-
-/* === MOBILE WELCOME STACK (fleet QA) === */
-/* Kill side-by-side hero chrome on phone: stack CTAs, rails, collages, dials */
-@media (max-width: 640px) {
-  .ctaRow,
-  .actions,
-  .heroCtas {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    width: 100% !important;
-    max-width: 22rem !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  .headline {
+    font-size: clamp(2.2rem, 10vw, 3rem);
   }
-
+  .sub {
+    font-size: 0.95rem;
+  }
+  .ctaRow {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 22rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .ctaPrimary,
-  .ctaSecondary,
-  .ctaRow a,
-  .ctaRow button {
-    width: 100% !important;
-    justify-content: center !important;
-    box-sizing: border-box !important;
-  }
-
-  .jobRail,
-  .jobStrip,
-  .shotRail {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 0.65rem !important;
-    width: 100% !important;
-    max-width: 22rem !important;
-    margin: 0 auto !important;
-  }
-
-  .collageGrid,
-  .collage {
-    grid-template-columns: 1fr !important;
-    grid-template-rows: auto !important;
-    min-height: 0 !important;
-    max-width: 22rem !important;
-    width: 100% !important;
-  }
-
-  .tileMain,
-  .tileSide,
-  .tile {
-    grid-column: auto !important;
-    grid-row: auto !important;
-    min-height: 140px !important;
-  }
-
-  .plantDialGrid {
-    grid-template-columns: 1fr 1fr !important;
-    max-width: 100% !important;
-  }
-
-  .scanCard {
-    grid-template-columns: 1fr !important;
-    gap: 0.35rem !important;
-  }
-
-  .scanRight {
-    align-items: flex-start !important;
-  }
-
-  .materials,
-  .matGrid,
-  .swatchGrid {
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .statGrid,
-  .statsRow {
-    grid-template-columns: 1fr 1fr !important;
+  .ctaSecondary {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
   }
 }
